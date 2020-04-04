@@ -14,8 +14,14 @@
 
 .center {
   margin: auto;
-  width: 70%;
+  width: 80%;
   padding: 10px;
+}
+
+.testDiv {
+	border: 1px;
+	border-color: coral;
+	border-style: solid;
 }
 </style>
 
@@ -111,6 +117,7 @@ function SetFeature(){
 
 </script>
 
+<link rel="icon" type="image/png" href="resources/assets/img/favicon.png"> 
 </head>
 <body style=" background:#C0C0C0;" >
 <%-- <jsp:include page='header.jsp'>
@@ -118,7 +125,7 @@ function SetFeature(){
 </jsp:include> --%>
 <br/>
 <div class="container center" style=" background:#ffffff; border-radius: 6px;"> 
-
+<img class="img-fluid" src="resources/assets/img/favicon.png">
  
   <h1 class="page-header center" align="center">Patch Maker 1.0</h1>  
   
@@ -182,14 +189,14 @@ function SetFeature(){
 	     	 <div class="col-md-12">
 		      		<div class="form-group col-md-6">
 						<div>
-	                            <label for="date"><h4>Features</h4></label>
-	                              <textarea id="features" rows="2" cols="50"></textarea>
+	                            <label for="date"><h4>Features</h4> </label><br/>
+	                              <textarea id="features" rows="2" cols="58"></textarea>
 	                     </div>
 					</div>
 					<div class="form-group col-md-6">
 						<div>
 	                            <label for="date"><h4>Impact On Existing Functionality</h4></label>
-	                            <textarea id="impact" rows="2" cols="52">Not Applicable</textarea>
+	                            <textarea id="impact" rows="2" cols="61">Not Applicable</textarea>
 	                     </div>
 					</div>
                </div>
@@ -199,13 +206,13 @@ function SetFeature(){
 		      		<div class="form-group col-md-6">
 						<div>
 	                            <label for="date"><h4>New Functionality Added</h4></label>
-	                              <textarea id="newFunctionality" rows="2" cols="50">None</textarea>
+	                              <textarea id="newFunctionality" rows="2" cols="58">None</textarea>
 	                     </div>
 					</div>
 					<div class="form-group col-md-6">
 						<div>
 	                            <label for="date"><h4>Defect Fixed</h4></label>
-	                            <textarea id="defectsFixed" rows="2" cols="52"></textarea>
+	                            <textarea id="defectsFixed" rows="2" cols="61"></textarea>
 	                     </div>
 					</div>
                </div>
@@ -234,8 +241,8 @@ function SetFeature(){
 				</div>
 				<div class="col-md-6">
 						<div>
-							<label for="date"><h4>Output</h4></label>
-							<textarea id="installSteps" rows="4" cols="52">
+							<label for="date"><h4>Output</h4></label><br/>
+							<textarea id="installSteps" rows="4" cols="61">
 							</textarea>
 	                     </div>
                </div>
@@ -260,8 +267,8 @@ function SetFeature(){
 				</div>
 				<div class="col-md-6">
 						<div>
-							<label for="date"><h4>Output</h4></label>
-							<textarea id="rollbackSteps" rows="4" cols="52">
+							<label for="date"><h4>Output</h4></label><br/>
+							<textarea id="rollbackSteps" rows="4" cols="61">
 							</textarea>
 	                     </div>
                </div>
@@ -271,13 +278,13 @@ function SetFeature(){
 		      		<div class="form-group col-md-6">
 						<div>
 	                            <label for="date"><h4>Known Bugs</h4></label>
-	                            <textarea id="knownBugs" rows="2" cols="50">None</textarea>
+	                            <textarea id="knownBugs" rows="2" cols="58">None</textarea>
 	                     </div>
 					</div>
 					<div class="form-group col-md-6">
 						<div>
 	                            <label for="date"><h4>Risk if Any?</h4></label>
-	                            <textarea id="riskAny" rows="2" cols="52" >None</textarea>
+	                            <textarea id="riskAny" rows="2" cols="61" >None</textarea>
 	                     </div>
 					</div>
                </div>
