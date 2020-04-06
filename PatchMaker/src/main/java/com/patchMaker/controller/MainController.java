@@ -1,4 +1,4 @@
-package com.patchMaker.controller;
+/*package com.patchMaker.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -71,5 +71,5 @@ public class MainController {
 		   return "patchMaker";
 
 }
-	
+*/	
 	}

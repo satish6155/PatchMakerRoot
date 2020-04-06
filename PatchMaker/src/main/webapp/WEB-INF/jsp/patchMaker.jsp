@@ -12,17 +12,179 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 
+ html {
+  background-color: #D7D9DC;
+} 
+
 .center {
   margin: auto;
-  width: 80%;
+  width: 70%;
   padding: 10px;
 }
 
-.testDiv {
-	border: 1px;
-	border-color: coral;
-	border-style: solid;
+
+/* css of header.jsp */
+
+@import "https://fonts.googleapis.com/css?family=Merienda+One";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+@import "https://fonts.googleapis.com/css?family=Merienda+One";
+@import "https://fonts.googleapis.com/css?family=Merienda+One";
+
+a {
+	text-decoration: none;
+	color: #0062cc;
+	border-bottom: 0px;
 }
+
+.form-inline {
+	display: inline-block;
+}
+
+.navbar-header.col {
+	padding: 0 !important;
+}
+
+.navbar {
+	background: #fff;
+	padding-left: 16px;
+	padding-right: 16px;
+	border-bottom: 1px solid #d6d6d6;
+	box-shadow: 0 0 4px rgba(0, 0, 0, .1);
+}
+
+.nav-link img {
+	border-radius: 50%;
+	width: 36px;
+	height: 36px;
+	margin: -8px 0;
+	float: left;
+	margin-right: 10px;
+}
+
+.navbar .navbar-brand {
+	color: #555;
+	padding-left: 0;
+	padding-right: 50px;
+	font-family: 'Merienda One', sans-serif;
+}
+
+.navbar .navbar-brand i {
+	font-size: 20px;
+	margin-right: 5px;
+}
+
+.search-box {
+	position: relative;
+}
+
+.search-box input {
+	box-shadow: none;
+	padding-right: 35px;
+	border-radius: 3px !important;
+}
+
+.search-box .input-group-addon {
+	min-width: 35px;
+	border: none;
+	background: transparent;
+	position: absolute;
+	right: 0;
+	z-index: 9;
+	padding: 7px;
+	height: 100%;
+}
+
+.search-box i {
+	color: #a0a5b1;
+	font-size: 19px;
+}
+
+.navbar .nav-item i {
+	font-size: 18px;
+}
+
+.navbar .dropdown-item i {
+	font-size: 16px;
+	min-width: 22px;
+}
+
+.navbar .nav-item.open>a {
+	background: none !important;
+}
+
+.navbar .dropdown-menu {
+	border-radius: 1px;
+	border-color: #e5e5e5;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+}
+
+.navbar .dropdown-menu li a {
+	color: #777;
+	padding: 8px 20px;
+	line-height: normal;
+}
+
+.navbar .dropdown-menu li a:hover, .navbar .dropdown-menu li a:active {
+	color: #333;
+}
+
+.navbar .dropdown-item .material-icons {
+	font-size: 21px;
+	line-height: 16px;
+	vertical-align: middle;
+	margin-top: -2px;
+}
+
+.navbar .badge {
+	background: #f44336;
+	font-size: 11px;
+	border-radius: 20px;
+	position: absolute;
+	min-width: 10px;
+	padding: 4px 6px 0;
+	min-height: 18px;
+	top: 5px;
+}
+
+.navbar ul.nav li a.notifications, .navbar ul.nav li a.messages {
+	position: relative;
+	margin-right: 10px;
+}
+
+.navbar ul.nav li a.messages {
+	margin-right: 20px;
+}
+
+.navbar a.notifications .badge {
+	margin-left: -8px;
+}
+
+.navbar a.messages .badge {
+	margin-left: -4px;
+}
+
+.navbar .active a, .navbar .active a:hover, .navbar .active a:focus {
+	background: transparent !important;
+}
+
+@media ( min-width : 1200px) {
+	.form-inline .input-group {
+		width: 300px;
+		margin-left: 30px;
+	}
+}
+
+@media ( max-width : 1199px) {
+	.form-inline {
+		display: block;
+		margin-bottom: 10px;
+	}
+	.input-group {
+		width: 100%;
+	}
+} 
+
 </style>
 
 <body onload="executeAll();">
@@ -117,15 +279,49 @@ function SetFeature(){
 
 </script>
 
-<link rel="icon" type="image/png" href="resources/assets/img/favicon.png"> 
 </head>
-<body style=" background:#C0C0C0;" >
+<body>
+
+<nav class="navbar navbar-default navbar-expand-xl navbar-light">
+		<div class="navbar-header d-flex col">
+			<a class="navbar-brand" href="#"><i class="fa fa-cube"></i>SVN<b>Patch Maker</b></a>
+			<button type="button" data-target="#navbarCollapse"
+				data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
+				<span class="navbar-toggler-icon"></span> <span class="icon-bar"></span>
+				<span class="icon-bar"></span> <span class="icon-bar"></span>
+			</button>
+		</div>
+		<!-- Collection of nav links, forms, and other content for toggling -->
+		<div id="navbarCollapse"
+			class="collapse navbar-collapse justify-content-start">
+			<ul class="nav navbar-nav">
+				<li class="nav-item active"><a href="DashboardNew.jsp"
+					class="nav-link">Home</a></li>
+				<li class="nav-item"><a href="#" class="nav-link">Log Out</a></li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right ml-auto">
+		
+				<li class="nav-item dropdown"><a href="#"
+					data-toggle="dropdown" class="nav-link dropdown-toggle user-action">
+					<img
+						src="<%=request.getContextPath()%>/resources/images/MyImage.jpg" class="avatar" alt="User"><%=session.getAttribute("username")%>
+						<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="UserProfile.jsp" class="dropdown-item"><i
+								class="fa fa-user-o"></i> Profile</a></li>
+		
+						<li class="divider dropdown-divider"></li>
+						<li><a href="<%=request.getContextPath()%>/logout" class="dropdown-item"><i
+								class="material-icons">&#xE8AC;</i> Logout</a></li>
+					</ul></li>
+			</ul>
+		</div>
+	</nav>
 <%-- <jsp:include page='header.jsp'>
     <jsp:param name="articleId" value="Satish"/>
 </jsp:include> --%>
-<br/>
-<div class="container center" style=" background:#ffffff; border-radius: 6px;"> 
-<img class="img-fluid" src="resources/assets/img/favicon.png">
+<div class="container center" style="border:.5px solid red"> 
  
   <h1 class="page-header center" align="center">Patch Maker 1.0</h1>  
   
@@ -189,14 +385,14 @@ function SetFeature(){
 	     	 <div class="col-md-12">
 		      		<div class="form-group col-md-6">
 						<div>
-	                            <label for="date"><h4>Features</h4> </label><br/>
-	                              <textarea id="features" rows="2" cols="58"></textarea>
+	                            <label for="date"><h4>Features</h4></label>
+	                              <textarea id="features" rows="2" cols="50"></textarea>
 	                     </div>
 					</div>
 					<div class="form-group col-md-6">
 						<div>
 	                            <label for="date"><h4>Impact On Existing Functionality</h4></label>
-	                            <textarea id="impact" rows="2" cols="61">Not Applicable</textarea>
+	                            <textarea id="impact" rows="2" cols="52">Not Applicable</textarea>
 	                     </div>
 					</div>
                </div>
@@ -206,13 +402,13 @@ function SetFeature(){
 		      		<div class="form-group col-md-6">
 						<div>
 	                            <label for="date"><h4>New Functionality Added</h4></label>
-	                              <textarea id="newFunctionality" rows="2" cols="58">None</textarea>
+	                              <textarea id="newFunctionality" rows="2" cols="50">None</textarea>
 	                     </div>
 					</div>
 					<div class="form-group col-md-6">
 						<div>
 	                            <label for="date"><h4>Defect Fixed</h4></label>
-	                            <textarea id="defectsFixed" rows="2" cols="61"></textarea>
+	                            <textarea id="defectsFixed" rows="2" cols="52"></textarea>
 	                     </div>
 					</div>
                </div>
@@ -241,8 +437,8 @@ function SetFeature(){
 				</div>
 				<div class="col-md-6">
 						<div>
-							<label for="date"><h4>Output</h4></label><br/>
-							<textarea id="installSteps" rows="4" cols="61">
+							<label for="date"><h4>Output</h4></label>
+							<textarea id="installSteps" rows="4" cols="52">
 							</textarea>
 	                     </div>
                </div>
@@ -267,8 +463,8 @@ function SetFeature(){
 				</div>
 				<div class="col-md-6">
 						<div>
-							<label for="date"><h4>Output</h4></label><br/>
-							<textarea id="rollbackSteps" rows="4" cols="61">
+							<label for="date"><h4>Output</h4></label>
+							<textarea id="rollbackSteps" rows="4" cols="52">
 							</textarea>
 	                     </div>
                </div>
@@ -278,13 +474,13 @@ function SetFeature(){
 		      		<div class="form-group col-md-6">
 						<div>
 	                            <label for="date"><h4>Known Bugs</h4></label>
-	                            <textarea id="knownBugs" rows="2" cols="58">None</textarea>
+	                            <textarea id="knownBugs" rows="2" cols="50">None</textarea>
 	                     </div>
 					</div>
 					<div class="form-group col-md-6">
 						<div>
 	                            <label for="date"><h4>Risk if Any?</h4></label>
-	                            <textarea id="riskAny" rows="2" cols="61" >None</textarea>
+	                            <textarea id="riskAny" rows="2" cols="52" >None</textarea>
 	                     </div>
 					</div>
                </div>

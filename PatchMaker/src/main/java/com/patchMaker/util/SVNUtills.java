@@ -22,19 +22,57 @@ import com.patchMaker.entity.PatchDetail;
 
 
 public class SVNUtills {
+	
+	public String authenticateUser(String username, String password){
+		
+		//setupLibrary();
+		String errorMsg = null;
+				
+		try {
+			SVNURL url = SVNURL.parseURIEncoded("https://nucnocorpsvn.nucleussoftware.com:18080/svn/neo_implementations/hdfc_neo/branches/dev_hdfc_neo/hdfc_neo_3.0/custom_development/neo_intg/source_code/dbscript/Loan_Movement_Patch");
+			SVNRepository repository = SVNRepositoryFactory.create(url);
+			ISVNAuthenticationManager authManager = SVNWCUtil.createDefaultAuthenticationManager(username, password);
+	        repository.setAuthenticationManager(authManager);
+	        repository.testConnection();
+		
+		} catch (SVNException e) {
+			SVNErrorMessage err = e.getErrorMessage();
+
+			while (err != null) {
+				
+				System.err.println(err.getErrorCode().getCode() + " : " + err.getMessage());
+				
+				if (err.getMessage().contains("Authentication")) {
+					errorMsg = "Invalid User name or Password!!";
+				} else if (err.getErrorCode().getCode() == 175002) {
+					errorMsg = "SVN is down please check later";
+				}
+				err = err.getChildErrorMessage();
+				
+				return errorMsg;
+		}
+		}
+		
+		return errorMsg;
+		
+	}
+	
+	
+	
+	
+	
 
     public static void svn_actions(PatchDetail patchDetail, String username, String password) throws SVNException {
         
         setupLibrary();
         
-       
-       /* try {*/
+        try {
             commitExample(username,password);
-       /* } catch (SVNException e) {
+        } catch (SVNException e) {
             SVNErrorMessage err = e.getErrorMessage();
             
-             * Display all tree of error messages. 
-             * Utility method SVNErrorMessage.getFullMessage() may be used instead of the loop.
+            /*  Display all tree of error messages. 
+              Utility method SVNErrorMessage.getFullMessage() may be used instead of the loop.*/
              
             while(err != null) {
                 System.err.println(err.getErrorCode().getCode() + " : " + err.getMessage());
@@ -45,7 +83,7 @@ public class SVNUtills {
             }
             System.exit(1);
         }
-        System.exit(0);*/
+        System.exit(0);
     }
 
     private static void commitExample(String username, String password) throws SVNException {
@@ -59,10 +97,6 @@ public class SVNUtills {
       /*  String userName = "dipaliya.jain";
         String userPassword = "mar@2020";
         */
-        System.out.println("SVN 1 : URL IS : "+url);
-        System.out.println("username : "+username);
-        System.out.println("username : "+password);
-        
         /*deepali 
          * Sample file contents.
          */
@@ -120,9 +154,6 @@ public class SVNUtills {
          */
         SVNRepository repository = SVNRepositoryFactory.create(url);
         
-        System.out.println("SVN 2 : repository is :"+repository);
-        
-
         /*
          * User's authentication information (name/password) is provided via  an 
          * ISVNAuthenticationManager  instance.  SVNWCUtil  creates  a   default 
@@ -155,8 +186,7 @@ public class SVNUtills {
          * "" (empty string) is path relative to that URL, 
          * -1 is value that may be used to specify HEAD (latest) revision.
          */
-        System.out.println("SVN4_1");
-       /* repository.testConnection();
+      /* repository.testConnection();
         }
         catch(SVNException e){
         	System.err.println("exception is : "+e);
@@ -165,7 +195,6 @@ public class SVNUtills {
         	}
         	
         }*/
-        System.out.println("SVN4_2 : "+repository.checkPath("", -1));
         SVNNodeKind nodeKind = repository.checkPath("", -1);
         System.out.println("SVN 5 : nodeKind ");
 

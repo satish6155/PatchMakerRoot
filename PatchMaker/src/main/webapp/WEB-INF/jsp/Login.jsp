@@ -299,12 +299,14 @@ text-align :center;
 		 isValidUser = <%=session.getAttribute("isValidUser")%>;
 
      }
+	     
+	     var errorMsg = "<%=session.getAttribute("errorMsg")%>";
 
-    if(isValidUser == false){
+    if(isValidUser == false && errorMsg != "null"){
     	 
-    	 var errorMsg = "<%=session.getAttribute("errorMsg")%>";
-    	 
-	   	document.getElementById("error").innerHTML=errorMsg;
+    	document.getElementById("error").innerHTML=errorMsg;
+	   	
+	   	<% session.setAttribute("errorMsg",null); 	%>
 	  
 	 }
   
@@ -323,15 +325,9 @@ SVN Patch Maker
 
 <div class="wrapper fadeInDown">
   <div id="formContent">
-    <!-- Tabs Titles -->
-
-    <!-- Icon -->
-<!--   <div class="fadeIn first">
-      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
-    </div>  -->
     
     <!-- Login Form -->
-    <form action="svnloginController" method="post">
+    <form action="login" method="post">
     
     <span id="error" style ="color:red"></span>
       <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
