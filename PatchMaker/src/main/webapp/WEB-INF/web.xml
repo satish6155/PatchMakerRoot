@@ -5,6 +5,7 @@
 	<display-name>Archetype Created Web Application</display-name>
 	
 	<welcome-file-list>
+	<welcome-file>/WEB-INF/jsp/login.jsp</welcome-file>
 	<welcome-file>/WEB-INF/jsp/Login.jsp</welcome-file>
 	</welcome-file-list>
 	

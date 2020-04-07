@@ -102,6 +102,13 @@
 
 		<!-- Hibernate -->
 		<dependency>
+    		<groupId>org.tmatesoft.svnkit</groupId>
+    		<artifactId>svnkit</artifactId>
+    		<version>1.10.1</version>
+		</dependency>
+
+		<!-- Hibernate -->
+		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>

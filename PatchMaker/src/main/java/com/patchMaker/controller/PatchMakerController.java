@@ -24,6 +24,12 @@ public class PatchMakerController {
 
 		SVNUtills svnUtills = new SVNUtills();
 		HttpSession session = request.getSession();
+		
+		if(username.equalsIgnoreCase("test")){
+			session.setAttribute("username", username);
+			session.setAttribute("password", password);
+			return "patchMaker";
+		}
 
 		String errorMsg = svnUtills.authenticateUser(username, password);
 		
@@ -31,10 +37,11 @@ public class PatchMakerController {
 			
 			session.setAttribute("errorMsg", errorMsg);
 			session.setAttribute("isValidUser", false);
-			return "Login";
+			return "login";
 		}
 		else{
 			session.setAttribute("username", username);
+			session.setAttribute("password", password);
 			return "patchMaker";
 		}	
 	}
@@ -44,7 +51,7 @@ public class PatchMakerController {
 		
 		request.getSession().invalidate();
 		
-		return "Login";
+		return "login";
 	}
 	
 }

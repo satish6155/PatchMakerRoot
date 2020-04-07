@@ -1,0 +1,9 @@
+@CHARSET "ISO-8859-1";
+
+
+
+.testDiv {
+	border: 1px;
+	border-color: coral;
+	border-style: solid;
+}
