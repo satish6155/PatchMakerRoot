@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="releaseNote" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Error" uuid="e1acfc63-96e3-4655-8af8-ef5072ab84f4">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select 1 from dual]]>
+	</queryString>
+	<field name="1" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="a252e3fb-462a-4162-913a-00e3a2f1ac12" x="0" y="0" width="555" height="61"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="839dc5cf-66d2-4a20-bdad-229dd4abddb6" x="0" y="0" width="62" height="61"/>
+			</rectangle>
+			<image>
+				<reportElement uuid="32b1c9b2-084a-4758-bfb9-f367c1aeae98" x="4" y="2" width="61" height="58"/>
+				<imageExpression><![CDATA["D:\\JRXML_AND_REPORT\\JRXML\\nucleusLogo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="1d68c224-a639-4a1f-ab5d-4e62699a361b" x="0" y="61" width="95" height="18"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Document ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5761d9ce-8952-450c-92ba-31043b7615f9" x="194" y="61" width="96" height="18"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Version No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f2239f60-864c-40c5-9182-8a27e9818b03" x="374" y="61" width="96" height="18"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Released Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b060b939-e665-4363-b8b7-f5af5e3d48bf" x="95" y="61" width="99" height="18"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[REL-T-01]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6de8fa04-7d32-41d7-887c-f02403561405" x="290" y="61" width="84" height="18"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[1.0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b72dc3bc-6a50-4fe1-8183-f588eed6079c" x="470" y="61" width="85" height="18"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[20/05/19]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="08458986-af61-4564-98f8-b2bcb251845f" x="65" y="2" width="490" height="58"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Release Process Template – Customer Release Note]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="650" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2a7f32df-cd86-46e1-9e29-1525000e0aae" x="0" y="4" width="136" height="20"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Product / Project Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8429f901-177a-4fde-aaa1-fb69c01c9153" x="131" y="4" width="317" height="20"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[PM-IMP-HDFC-IN-FNEO-1605-F]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="17ea3b66-af77-4d90-97f4-26c3cc6f461c" x="0" y="26" width="81" height="20"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Release:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="670de42f-761d-4768-bc0f-8e646c1a1cca" x="80" y="26" width="462" height="32"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Patch for Pre-printed Documents issue – NEOSFR-1207 : PDIMP-809
+dfkhwadlkfgdegerngej]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dc3c7152-2758-454b-955a-5775aacd920a" x="0" y="70" width="136" height="20"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Release Note Contents:]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="8b488960-d313-412e-b425-9988fbda3d4d" x="0" y="62" width="555" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="1dfa17e0-c097-47a3-856d-d3c399076161" x="5" y="92" width="168" height="20"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[1. Features in this Release:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="eedc1622-9480-4693-a6bf-911587528ad1" x="12" y="111" width="390" height="40"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[This release includes fix against PDIMP-1304 for SP5 changes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5cf78674-bca4-46ca-8ed2-66f636a55256" x="12" y="170" width="390" height="40"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[N/A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="12bb2c23-109e-427f-90f1-46cd167aeaf8" x="0" y="151" width="220" height="20"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[2. Impact on existing functionality:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b0024a2b-dc60-423d-ad76-73cf284e0fbb" x="0" y="209" width="220" height="20"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[3. New Functionality added:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b45a7561-9e31-4e3e-aa59-a495321b3f8b" x="12" y="228" width="390" height="40"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[N/A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3831a31c-b3e0-4d4e-b586-f2ff9be20916" x="0" y="264" width="220" height="19"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[4. Defects Fixed in this release:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f9218600-aa5b-43a1-aded-d296c99ab14c" x="12" y="281" width="390" height="40"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[N/A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6717be28-7135-48a0-8789-6e65d9314537" x="0" y="319" width="220" height="19"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[5. Installation Steps:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="696410e4-a509-441a-afa0-f1f7a0265499" x="12" y="336" width="390" height="40"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[N/A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6627a636-3dfd-40c1-bb65-6e34bc3d069d" x="0" y="375" width="374" height="19"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[6. Files released with their versions and checksum:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aee7f6bc-798c-4af7-b155-14b17193e716" x="12" y="392" width="390" height="19"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SVN revision number:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ca0894d8-a922-4ebf-9be1-694290130c49" x="12" y="452" width="390" height="35"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[N/A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="99a6536c-ff5c-42dc-a345-0d6dcfd2156e" x="0" y="435" width="374" height="19"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[7. Rollback steps:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f2a12e99-fa6d-4947-822c-b16f67c464d4" x="12" y="504" width="482" height="40"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[N/A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3ddac78b-ba33-4c87-92e6-7aaa84c4f6fb" x="0" y="487" width="374" height="19"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[8. Testing Details:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="18fd40f0-878b-44fc-92ab-6df7a2194059" x="12" y="561" width="390" height="37"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[N/A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="620a8ec4-9300-4cb5-ab10-bf3b8dbe7333" x="0" y="544" width="374" height="19"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[9. Known Issues and Work Around:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3cf1466c-a18f-4429-b86b-03d921554774" x="12" y="616" width="390" height="32"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[N/A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7466c61e-32d0-4067-a687-4433f4deeee7" x="0" y="599" width="374" height="19"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[10. Known defects in this release:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f2abc639-9151-4ab6-9231-b43f14e24338" x="12" y="411" width="390" height="19"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Patch check in :]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="a99155ee-3fe8-494c-8199-9eb848d68dc2" x="173" y="0" width="201" height="18"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[For restricted circulation only]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0a88cf1a-80fa-434b-9f5c-e595c2769de8" x="0" y="0" width="173" height="18"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Template]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="8482084e-068b-4bbe-9cd0-709a9a8ad7d7" x="374" y="0" width="181" height="18"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+ $V{PAGE_NUMBER} + " of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

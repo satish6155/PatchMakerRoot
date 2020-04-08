@@ -1,11 +1,14 @@
 package com.patchMaker.dao;
 
+import java.sql.Connection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Session;
+import org.hibernate.engine.spi.SessionImplementor;
 import org.springframework.stereotype.Repository;
 
 @Repository("genericDao")
@@ -43,5 +46,12 @@ public class GenericEntityDaoImpl<T> {
 		T entity = findOne(clazz,entityId);
 		delete(entity);
 	}
+	@SuppressWarnings("unchecked")
+	public Connection getconnection() {
 
+        final Session session = (Session) entityManager.unwrap((Class) Session.class);
+
+        return ((SessionImplementor) session).connection();
+
+ }
 }
