@@ -26,7 +26,8 @@
 				<li class="nav-item dropdown"><a href="#"
 					data-toggle="dropdown" class="nav-link dropdown-toggle user-action">
 					<img
-						src="<%=request.getContextPath()%>/resources/assets/img/logo.png" class="avatar" alt="User"><%=session.getAttribute("username")%>
+						src="<%=request.getContextPath()%>/resources/assets/img/logo.png" class="avatar" alt="User">
+						<b><%=session.getAttribute("username")%> </b>
 						<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="#" class="dropdown-item"><i

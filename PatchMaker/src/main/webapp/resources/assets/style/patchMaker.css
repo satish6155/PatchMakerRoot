@@ -1,9 +1,12 @@
 @CHARSET "ISO-8859-1";
 
+/* This import is not working */
 
-
-.testDiv {
+/* .testDiv {
 	border: 1px;
 	border-color: coral;
 	border-style: solid;
 }
+ */
+ 
+ 

@@ -11,25 +11,54 @@
 
 <!-- Order of import is very important in below imports, bootstrap.min.css should always be imported first -->
 <link href="<c:url value="/resources/assets/style/bootstrap.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/assets/style/patchMaker.css" />" rel="stylesheet"> 
+<link href="<c:url value="/resources/assets/style/patchMaker.css"/>" rel="stylesheet"> 
  
 <!-- Order of import is very important in below imports, jquery.min.js should always be imported first -->
 <script src="<c:url value="/resources/assets/script/jquery.min.js" />"></script>
 <script src="<c:url value="/resources/assets/script/bootstrap.min.js" />"></script> 
 <script src="<c:url value="/resources/assets/script/patchMaker.js" />"></script>
 
-<body onload="executeAll();">
+<style>
 
+body {
+	/* background-color: #D7D9DC !important; */
+}
+.testDiv {
+	border: 1px;
+	border-color: coral;
+	border-style: solid;
+}
+.main {
+ background:#ffffff; 
+ border: 1px; 
+ border-radius: 5px;
+/*  border-color: gray; 
+ border-style: solid;  */
+ margin: auto; 
+ padding: 10px;
+}
+
+.form-control,textarea {
+border: .7px;	
+border-color: gray; 
+border-style: solid;
+border-radius: 3px;
+width:100%
+}
+
+</style>
+
+<body onload="executeAll();">
 </head>
 <body>
-<body style=" background:#C0C0C0;" >
+<body>
 
 
 <jsp:include page='header.jsp'>
     <jsp:param name="articleId" value="Satish"/>
 </jsp:include>
 
-<div class="container center" style=" background:#ffffff; border-radius: 6px; margin: auto; padding: 10px;"> 
+<div class="container main"> 
 
  
   <h1 class="page-header center" align="center">Patch Maker 1.0 </h1>  
@@ -95,13 +124,13 @@
 		      		<div class="form-group col-md-6">
 						<div>
 	                            <label for="date"><h4>Features</h4> </label><br/>
-	                              <textarea id="features" rows="2" cols="58"></textarea>
+	                              <textarea id="features" rows="2" style="width: 100%;"></textarea>
 	                     </div>
 					</div>
 					<div class="form-group col-md-6">
 						<div>
 	                            <label for="date"><h4>Impact On Existing Functionality</h4></label>
-	                            <textarea id="impact" rows="2" cols="61">Not Applicable</textarea>
+	                            <textarea id="impact" rows="2" style="width: 100%;">Not Applicable</textarea>
 	                     </div>
 					</div>
                </div>
@@ -111,13 +140,13 @@
 		      		<div class="form-group col-md-6">
 						<div>
 	                            <label for="date"><h4>New Functionality Added</h4></label>
-	                              <textarea id="newFunctionality" rows="2" cols="58">None</textarea>
+	                              <textarea id="newFunctionality" rows="2">None</textarea>
 	                     </div>
 					</div>
 					<div class="form-group col-md-6">
 						<div>
 	                            <label for="date"><h4>Defect Fixed</h4></label>
-	                            <textarea id="defectsFixed" rows="2" cols="61"></textarea>
+	                            <textarea id="defectsFixed" rows="2"></textarea>
 	                     </div>
 					</div>
                </div>
@@ -138,16 +167,16 @@
 							  </select>
 	                     </div>
 					</div>
-					<div class="form-group  col-md-3">      
+					<div class="form-group col-md-3">      
                               <label for="zipcode"><h4>&nbsp</h4></label>
-                              <input type="button" value="Remove" class="form-control btn-danger" onClick="removeInstallStep()">
+                              <input type="button" value="Remove" class="form-control btn-danger" style="width:113%;" onClick="removeInstallStep()">
                          
                       </div>
 				</div>
 				<div class="col-md-6">
 						<div>
 							<label for="date"><h4>Output</h4></label><br/>
-							<textarea id="installSteps" rows="4" cols="61">
+							<textarea id="installSteps" rows="4" style="width:98%;">
 							</textarea>
 	                     </div>
                </div>
@@ -166,14 +195,14 @@
 					</div>
 					<div class="form-group  col-md-3">      
                               <label for="zipcode"><h4>&nbsp</h4></label>
-                              <input type="button" value="Remove" class="form-control btn-danger" onClick="removeRollbackStep()">
+                              <input type="button" value="Remove" class="form-control btn-danger" style="width:113%;" onClick="removeRollbackStep()">
                          
                       </div>
 				</div>
 				<div class="col-md-6">
 						<div>
 							<label for="date"><h4>Output</h4></label><br/>
-							<textarea id="rollbackSteps" rows="4" cols="61">
+							<textarea id="rollbackSteps" rows="4" style="width:98%;">
 							</textarea>
 	                     </div>
                </div>
@@ -183,13 +212,13 @@
 		      		<div class="form-group col-md-6">
 						<div>
 	                            <label for="date"><h4>Known Bugs</h4></label>
-	                            <textarea id="knownBugs" rows="2" cols="58">None</textarea>
+	                            <textarea id="knownBugs" rows="2">None</textarea>
 	                     </div>
 					</div>
 					<div class="form-group col-md-6">
 						<div>
 	                            <label for="date"><h4>Risk if Any?</h4></label>
-	                            <textarea id="riskAny" rows="2" cols="61" >None</textarea>
+	                            <textarea id="riskAny" rows="2">None</textarea>
 	                     </div>
 					</div>
                </div>
