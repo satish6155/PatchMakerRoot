@@ -1,12 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="releaseNote" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Error" uuid="e1acfc63-96e3-4655-8af8-ef5072ab84f4">
-	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.zoom" value="1.2396694214876032"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="52"/>
+	<parameter name="patchName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="features" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="impact" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="newFunctionality" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="defectsFixed" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="patchEnvironments" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="testingDetails" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="installSteps" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="rollbackSteps" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="knownBugs" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="svnRevisions" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="relatedJiras" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateString" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[select 1 from dual]]>
+		<![CDATA[select $P{dateString} dateString,
+$P{defectsFixed} defectsFixed,
+$P{features} features,
+$P{impact} impact,
+$P{installSteps} installSteps,
+$P{knownBugs} knownBugs,
+$P{newFunctionality} newFunctionality,
+$P{patchEnvironments} patchEnvironments,
+$P{patchName} patchName,
+$P{relatedJiras} relatedJiras,
+$P{rollbackSteps} rollbackSteps,
+$P{svnRevisions} svnRevisions,
+$P{testingDetails} testingDetails
+ from dual]]>
 	</queryString>
-	<field name="1" class="java.math.BigDecimal"/>
+	<field name="PATCHENVIRONMENTS" class="java.lang.String"/>
+	<field name="DATESTRING" class="java.lang.String"/>
+	<field name="DEFECTSFIXED" class="java.lang.String"/>
+	<field name="FEATURES" class="java.lang.String"/>
+	<field name="IMPACT" class="java.lang.String"/>
+	<field name="INSTALLSTEPS" class="java.lang.String"/>
+	<field name="KNOWNBUGS" class="java.lang.String"/>
+	<field name="NEWFUNCTIONALITY" class="java.lang.String"/>
+	<field name="PATCHNAME" class="java.lang.String"/>
+	<field name="RELATEDJIRAS" class="java.lang.String"/>
+	<field name="ROLLBACKSTEPS" class="java.lang.String"/>
+	<field name="SVNREVISIONS" class="java.lang.String"/>
+	<field name="TESTINGDETAILS" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -93,7 +157,14 @@
 				<text><![CDATA[1.0]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="b72dc3bc-6a50-4fe1-8183-f588eed6079c" x="470" y="61" width="85" height="18"/>
+				<reportElement uuid="08458986-af61-4564-98f8-b2bcb251845f" x="65" y="2" width="490" height="58"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Release Process Template – Customer Release Note]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f81800ae-befc-4307-90b5-53e4c4f01583" x="470" y="61" width="85" height="18"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -104,15 +175,8 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[20/05/19]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="08458986-af61-4564-98f8-b2bcb251845f" x="65" y="2" width="490" height="58"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="16" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Release Process Template – Customer Release Note]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$F{DATESTRING}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
@@ -128,7 +192,7 @@
 				<text><![CDATA[Product / Project Name:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="8429f901-177a-4fde-aaa1-fb69c01c9153" x="131" y="4" width="317" height="20"/>
+				<reportElement uuid="8429f901-177a-4fde-aaa1-fb69c01c9153" x="126" y="5" width="317" height="20"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="false"/>
 				</textElement>
@@ -142,14 +206,6 @@
 				<text><![CDATA[Release:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="670de42f-761d-4768-bc0f-8e646c1a1cca" x="80" y="26" width="462" height="32"/>
-				<textElement verticalAlignment="Top">
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[Patch for Pre-printed Documents issue – NEOSFR-1207 : PDIMP-809
-dfkhwadlkfgdegerngej]]></text>
-			</staticText>
-			<staticText>
 				<reportElement uuid="dc3c7152-2758-454b-955a-5775aacd920a" x="0" y="70" width="136" height="20"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true"/>
@@ -157,7 +213,7 @@ dfkhwadlkfgdegerngej]]></text>
 				<text><![CDATA[Release Note Contents:]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="8b488960-d313-412e-b425-9988fbda3d4d" x="0" y="62" width="555" height="1"/>
+				<reportElement uuid="8b488960-d313-412e-b425-9988fbda3d4d" x="0" y="64" width="555" height="1"/>
 				<graphicElement>
 					<pen lineStyle="Dashed"/>
 				</graphicElement>
@@ -170,145 +226,123 @@ dfkhwadlkfgdegerngej]]></text>
 				<text><![CDATA[1. Features in this Release:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="eedc1622-9480-4693-a6bf-911587528ad1" x="12" y="111" width="390" height="40"/>
-				<textElement verticalAlignment="Top">
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[This release includes fix against PDIMP-1304 for SP5 changes]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="5cf78674-bca4-46ca-8ed2-66f636a55256" x="12" y="170" width="390" height="40"/>
-				<textElement verticalAlignment="Top">
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[N/A]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="12bb2c23-109e-427f-90f1-46cd167aeaf8" x="0" y="151" width="220" height="20"/>
+				<reportElement uuid="12bb2c23-109e-427f-90f1-46cd167aeaf8" x="0" y="147" width="220" height="20"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[2. Impact on existing functionality:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="b0024a2b-dc60-423d-ad76-73cf284e0fbb" x="0" y="209" width="220" height="20"/>
+				<reportElement uuid="b0024a2b-dc60-423d-ad76-73cf284e0fbb" x="0" y="202" width="220" height="20"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[3. New Functionality added:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="b45a7561-9e31-4e3e-aa59-a495321b3f8b" x="12" y="228" width="390" height="40"/>
-				<textElement verticalAlignment="Top">
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[N/A]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="3831a31c-b3e0-4d4e-b586-f2ff9be20916" x="0" y="264" width="220" height="19"/>
+				<reportElement uuid="3831a31c-b3e0-4d4e-b586-f2ff9be20916" x="0" y="259" width="220" height="19"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[4. Defects Fixed in this release:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="f9218600-aa5b-43a1-aded-d296c99ab14c" x="12" y="281" width="390" height="40"/>
-				<textElement verticalAlignment="Top">
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[N/A]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="6717be28-7135-48a0-8789-6e65d9314537" x="0" y="319" width="220" height="19"/>
+				<reportElement uuid="6717be28-7135-48a0-8789-6e65d9314537" x="0" y="370" width="220" height="19"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[5. Installation Steps:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="696410e4-a509-441a-afa0-f1f7a0265499" x="12" y="336" width="390" height="40"/>
-				<textElement verticalAlignment="Top">
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[N/A]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="6627a636-3dfd-40c1-bb65-6e34bc3d069d" x="0" y="375" width="374" height="19"/>
+				<reportElement uuid="6627a636-3dfd-40c1-bb65-6e34bc3d069d" x="0" y="462" width="374" height="19"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[6. Files released with their versions and checksum:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="aee7f6bc-798c-4af7-b155-14b17193e716" x="12" y="392" width="390" height="19"/>
-				<textElement verticalAlignment="Top">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[SVN revision number:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ca0894d8-a922-4ebf-9be1-694290130c49" x="12" y="452" width="390" height="35"/>
-				<textElement verticalAlignment="Top">
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[N/A]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="99a6536c-ff5c-42dc-a345-0d6dcfd2156e" x="0" y="435" width="374" height="19"/>
+				<reportElement uuid="99a6536c-ff5c-42dc-a345-0d6dcfd2156e" x="0" y="511" width="374" height="19"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[7. Rollback steps:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="f2a12e99-fa6d-4947-822c-b16f67c464d4" x="12" y="504" width="482" height="40"/>
-				<textElement verticalAlignment="Top">
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[N/A]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="3ddac78b-ba33-4c87-92e6-7aaa84c4f6fb" x="0" y="487" width="374" height="19"/>
+				<reportElement uuid="3ddac78b-ba33-4c87-92e6-7aaa84c4f6fb" x="0" y="313" width="374" height="19"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[8. Testing Details:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="18fd40f0-878b-44fc-92ab-6df7a2194059" x="12" y="561" width="390" height="37"/>
-				<textElement verticalAlignment="Top">
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[N/A]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="620a8ec4-9300-4cb5-ab10-bf3b8dbe7333" x="0" y="544" width="374" height="19"/>
+				<reportElement uuid="620a8ec4-9300-4cb5-ab10-bf3b8dbe7333" x="0" y="584" width="374" height="19"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[9. Known Issues and Work Around:]]></text>
 			</staticText>
+			<textField>
+				<reportElement uuid="17931afa-6150-407a-b012-36f12120726a" x="77" y="26" width="447" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{PATCHNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a274d279-f2b4-4071-bd05-ac1e819983c4" x="12" y="111" width="470" height="40"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{FEATURES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b87fb554-b5e3-44f2-8665-f60456ebd53d" x="12" y="167" width="470" height="40"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{IMPACT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8a0c18eb-8994-4551-9467-e83c27c6cb3f" x="12" y="222" width="470" height="40"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{NEWFUNCTIONALITY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0b40d08e-4ef6-4917-abe4-d0c7cdfbb8c3" x="12" y="278" width="470" height="40"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{DEFECTSFIXED}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f02e9419-843c-4e04-958a-7f4a8ba08559" x="12" y="331" width="470" height="40"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{TESTINGDETAILS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2bb6a513-0157-4a13-8789-461e813e9a39" x="12" y="388" width="470" height="74"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{INSTALLSTEPS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="277cd43d-af00-4e4b-843e-b242c361458a" x="12" y="529" width="470" height="55"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ROLLBACKSTEPS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="df246a77-13cd-410a-bf7e-356fe9009714" x="12" y="603" width="470" height="43"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{KNOWNBUGS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e2dd2dd5-dab1-4b9a-a95f-f3b3a282ebf3" x="12" y="481" width="470" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{SVNREVISIONS}]]></textFieldExpression>
+			</textField>
 			<staticText>
-				<reportElement uuid="3cf1466c-a18f-4429-b86b-03d921554774" x="12" y="616" width="390" height="32"/>
+				<reportElement uuid="20fdcd9e-06ba-4ac3-ad60-4f6fd1f36d6c" x="0" y="45" width="81" height="20"/>
 				<textElement verticalAlignment="Top">
-					<font isBold="false"/>
+					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[N/A]]></text>
+				<text><![CDATA[Related Jiras:]]></text>
 			</staticText>
-			<staticText>
-				<reportElement uuid="7466c61e-32d0-4067-a687-4433f4deeee7" x="0" y="599" width="374" height="19"/>
-				<textElement verticalAlignment="Top">
-					<font isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[10. Known defects in this release:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="f2abc639-9151-4ab6-9231-b43f14e24338" x="12" y="411" width="390" height="19"/>
-				<textElement verticalAlignment="Top">
-					<font isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[Patch check in :]]></text>
-			</staticText>
+			<textField>
+				<reportElement uuid="e8c11983-6d26-4964-8ae0-738e21ca1baa" x="77" y="45" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{RELATEDJIRAS}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<pageFooter>

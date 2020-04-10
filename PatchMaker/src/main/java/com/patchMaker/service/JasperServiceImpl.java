@@ -15,11 +15,13 @@ import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
 
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
 
 @Service("jasperServiceImpl")
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
@@ -36,6 +38,9 @@ public class JasperServiceImpl {
 		try {
 			JasperReport jasperReport = JasperCompileManager.compileReport(templatePathWithReport);
 			Connection con1 = genericDao.getconnection();
+			
+			//JasperReport jasperReport  = (JasperReport) JRLoader.loadObjectFromFile("D:\\\\JRXML_AND_REPORT\\\\JRXML\\\\releaseNote.jasper");
+			
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, con1);			
 			// java.awt.Image s=new java.awt.Image();
 			// File outDir = new File("D:/report");

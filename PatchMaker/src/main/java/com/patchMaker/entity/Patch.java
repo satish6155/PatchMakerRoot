@@ -1,5 +1,9 @@
 package com.patchMaker.entity;
 
+
+
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -28,6 +32,45 @@ public class Patch extends BaseEntity {
 	
 	@Column
 	private String internalJira;
+	
+	@Column
+	private Date date;
+	
+	@Column
+	private String defectsFixed;
+	
+	@Column
+	private String features;
+	
+	@Column
+	private String impact;
+	
+	@Column
+	private String installSteps;
+	
+	@Column
+	private String knownBugs;
+	
+	@Column
+	private String newFunctionality;
+	
+	@Column
+	private String patchEnvironments;
+	
+	@Column
+	private String rollbackSteps;
+	
+	@Column
+	private String svnRevisions;
+	
+	@Column
+	private String testingDetails;
+	
+	@Column 
+	private String createdBy;
+	
+	@Column 
+	private String project;
 
 	public String getPatchName() {
 		return patchName;
@@ -61,18 +104,120 @@ public class Patch extends BaseEntity {
 		this.internalJira = internalJira;
 	}
 
-	@Override
-	public String toString() {
-		return "Patch [patchName=" + patchName + ", bankJira=" + bankJira
-				+ ", productJira=" + productJira + ", internalJira="
-				+ internalJira + ", getId()=" + getId()
-				+ ", getCreationTimeStamp()=" + getCreationTimeStamp() + "]";
+	public Date getDate() {
+		return date;
 	}
 
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
-//	@Column(columnDefinition = "NUMBER(3)")
-//	private Integer bankJira;
+	public String getDefectsFixed() {
+		return defectsFixed;
+	}
 
+	public void setDefectsFixed(String defectsFixed) {
+		this.defectsFixed = defectsFixed;
+	}
+
+	public String getFeatures() {
+		return features;
+	}
+
+	public void setFeatures(String features) {
+		this.features = features;
+	}
+
+	public String getImpact() {
+		return impact;
+	}
+
+	public void setImpact(String impact) {
+		this.impact = impact;
+	}
+
+	public String getInstallSteps() {
+		return installSteps;
+	}
+
+	public void setInstallSteps(String installSteps) {
+		this.installSteps = installSteps;
+	}
+
+	public String getKnownBugs() {
+		return knownBugs;
+	}
+
+	public void setKnownBugs(String knownBugs) {
+		this.knownBugs = knownBugs;
+	}
+
+	public String getNewFunctionality() {
+		return newFunctionality;
+	}
+
+	public void setNewFunctionality(String newFunctionality) {
+		this.newFunctionality = newFunctionality;
+	}
+
+	public String getPatchEnvironments() {
+		return patchEnvironments;
+	}
+
+	public void setPatchEnvironments(String patchEnvironments) {
+		this.patchEnvironments = patchEnvironments;
+	}
+
+	public String getRollbackSteps() {
+		return rollbackSteps;
+	}
+
+	public void setRollbackSteps(String rollbackSteps) {
+		this.rollbackSteps = rollbackSteps;
+	}
+
+	public String getSvnRevisions() {
+		return svnRevisions;
+	}
+
+	public void setSvnRevisions(String svnRevisions) {
+		this.svnRevisions = svnRevisions;
+	}
+
+	public String getTestingDetails() {
+		return testingDetails;
+	}
+
+	public void setTestingDetails(String testingDetails) {
+		this.testingDetails = testingDetails;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
 	
+	
+
+	public String getProject() {
+		return project;
+	}
+
+	public void setProject(String project) {
+		this.project = project;
+	}
+
+	@Override
+	public String toString() {
+		return "Patch [patchName=" + patchName + ", bankJira=" + bankJira + ", productJira=" + productJira
+				+ ", internalJira=" + internalJira + ", date=" + date + ", defectsFixed=" + defectsFixed + ", features="
+				+ features + ", impact=" + impact + ", installSteps=" + installSteps + ", knownBugs=" + knownBugs
+				+ ", newFunctionality=" + newFunctionality + ", patchEnvironments=" + patchEnvironments
+				+ ", rollbackSteps=" + rollbackSteps + ", svnRevisions=" + svnRevisions + ", testingDetails="
+				+ testingDetails + ", createdBy=" + createdBy + "]";
+	}
 		
 }

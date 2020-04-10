@@ -29,6 +29,34 @@ function SetJiraType(){
 	document.getElementById('bankJiraId').value = document.getElementById('bankProject').value+"-";
 	SetFeature();
 }
+var patchEnvironmentSeq=1;
+var patchEnvironmentOptions = [];
+function SetPatchEnvironments(){
+	var newText = document.getElementById('patchEnvironmentsOptions').value;
+	if("Select Environments"!=newText ){
+		if(document.getElementById("patchEnvironments").innerHTML=="							" || document.getElementById("patchEnvironments").innerHTML==""){
+			document.getElementById("patchEnvironments").innerHTML = patchEnvironmentSeq+". " +newText + "\n";
+		}
+		else{
+			document.getElementById("patchEnvironments").innerHTML += patchEnvironmentSeq+". " +newText + "\n"  ;
+		}
+		patchEnvironmentOptions.push(document.getElementById("patchEnvironments").innerHTML);
+		patchEnvironmentSeq++;
+	}	
+}
+function removePatchEnvironments(){
+	patchEnvironmentOptions.pop();
+	if(patchEnvironmentSeq>1){
+		patchEnvironmentSeq--;
+		if(patchEnvironmentOptions.length==0)
+			document.getElementById("patchEnvironments").innerHTML ="";
+		else
+		document.getElementById("patchEnvironments").innerHTML = patchEnvironmentOptions[patchEnvironmentOptions.length-1];
+	}
+	else{
+		document.getElementById("patchEnvironments").innerHTML="";
+	}		
+}
 var installSeq=1;
 var InstallSteps = [];
 function SetInstallSteps(){

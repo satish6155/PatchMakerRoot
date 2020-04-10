@@ -23,6 +23,13 @@
 body {
 	/* background-color: #D7D9DC !important; */
 }
+
+.title {
+	color: #555;
+	font-family: 'Merienda One', sans-serif;
+	margin-bottom:-15px;
+
+}
 .testDiv {
 	border: 1px;
 	border-color: coral;
@@ -30,12 +37,13 @@ body {
 }
 .main {
  background:#ffffff; 
- border: 1px; 
+/* border: 1px; 
  border-radius: 5px;
-/*  border-color: gray; 
- border-style: solid;  */
- margin: auto; 
+  border-color: gray; 
+ border-style: solid;  
+ margin: auto; */
  padding: 10px;
+ margin-top:-60px;
 }
 
 .form-control,textarea {
@@ -58,13 +66,11 @@ width:100%
     <jsp:param name="articleId" value="Satish"/>
 </jsp:include>
 
-<div class="container main"> 
-
- 
-  <h1 class="page-header center" align="center">Patch Maker 1.0 </h1>  
+<div class="container main">    
   
     <div class="col-md-12 col-sm-6 col-xs-12"> 
-    <br/>
+    <h1 class="title" align="center"><b>Patch Maker 1.0 </b></h1> 
+    <hr style="border-top: 1px solid gray;"/>
 	      <div class="alert alert-info alert-dismissable">
 	        <a class="panel-close close" data-dismiss="alert">×</a> 
 	        <i class="fa fa-coffee"></i>
@@ -153,6 +159,39 @@ width:100%
 	       </div>
 	       <div class="row">  
 	     	 <div class="col-md-6">
+		      		 <div class="form-group col-md-5">
+						<div>
+	                            <label for="date"><h4>Patch Environments</h4></label>
+	                            <select class="form-control" id="patchEnvironmentsOptions" onchange="SetPatchEnvironments()">
+	                            <option>Select Environments</option>
+							    <option>Pre-prod</option>
+							    <option>Production</option>   
+							    <option>Scale-up</option> 	
+							    <option>Onsite-UAT</option> 
+							    <option>Onsite-SIT</option> 				   
+							  </select>
+	                     </div>
+					</div>
+					<div class="form-group col-md-3">      
+                              <label for="zipcode"><h4>&nbsp</h4></label>
+                              <input type="button" value="Remove" class="form-control btn-danger" style="width:100%;" onClick="removePatchEnvironments()">
+                         
+                      </div>
+						<div class="form-group col-md-4">
+							<label for="date"><h4>Output</h4></label><br/>
+							<textarea id="patchEnvironments" rows="3" style="width:108%;">
+							</textarea>
+	                     </div>
+               </div>
+               <div class="form-group col-md-6">
+						<div>
+	                            <label for="date"><h4>Testing Details</h4></label>
+	                            <textarea id="testingDetails" rows="3" style="width:98%;">None</textarea>
+	                     </div>
+					</div>
+	       </div>
+	       <div class="row">  
+	     	 <div class="col-md-6">
 		      		 <div class="form-group col-md-9">
 						<div>
 	                            <label for="date"><h4>Installations Steps</h4></label>
@@ -162,8 +201,7 @@ width:100%
 							    <option>Merge class files</option>   
 							    <option>Take restart</option> 	
 							    <option>Set hbm2ddl=update</option> 
-							    <option>Execute provide script</option> 
-							    <option>Custom</option> 						   
+							    <option>Execute provide script</option> 		   
 							  </select>
 	                     </div>
 					</div>
@@ -207,20 +245,20 @@ width:100%
 	                     </div>
                </div>
 	       </div>
-	       <div class="row">  
+	       <div class="row">   
 	     	 <div class="col-md-12">
 		      		<div class="form-group col-md-6">
 						<div>
-	                            <label for="date"><h4>Known Bugs</h4></label>
+	                            <label for="date"><h4>Known Bugs & Workaround</h4></label>
 	                            <textarea id="knownBugs" rows="2">None</textarea>
 	                     </div>
 					</div>
-					<div class="form-group col-md-6">
+				<!--	<div class="form-group col-md-6">
 						<div>
-	                            <label for="date"><h4>Risk if Any?</h4></label>
-	                            <textarea id="riskAny" rows="2">None</textarea>
+	                            <label for="date"><h4>Testing Details</h4></label>
+	                            <textarea id="testingDetails" rows="2">None</textarea>
 	                     </div>
-					</div>
+					</div> -->
                </div>
 	       </div>
 	              	 
