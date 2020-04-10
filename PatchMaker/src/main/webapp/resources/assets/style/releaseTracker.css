@@ -1,0 +1,38 @@
+
+/*  Order of import is very important in below imports, bootstrap.min.css should always be imported first  */
+
+@import "/resources/assets/style/bootstrap.min.css";
+@import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
+@import "https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css";
+@import "https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css";
+
+ 
+ 
+/*    Data Table Elements layout starts here */
+.buttons-copy, .buttons-excel, .buttons-csv {
+	width: 100px;
+	margin-top: 5px
+}
+
+.dt-buttons {
+	
+}
+.dataTables_filter {
+	
+}
+
+/* select page length drop down */
+.dataTables_length {      
+	margin-left: 12px;
+	margin-top: 3px
+}
+
+/*    Data Table Elements layout ends here */
+
+body {
+	/*  color: #566787; */
+	/* background: #f5f5f5; */
+	font-family: 'Varela Round', sans-serif;
+	font-size: 13px;
+	/* 	background-image: linear-gradient(to right, rgba(133, 146, 158,.3), rgba(133, 146, 158,1));  */
+}

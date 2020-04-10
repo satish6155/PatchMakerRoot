@@ -50,9 +50,7 @@ public class PatchMakerController {
 		patch.setDefectsFixed("Dummy defects fixed");
 		patch.setPatchName(patch.getProject()+"-"+patch.getBankJira()+"-"+new SimpleDateFormat("dd/MM/yyyy").format(patch.getDate())+"-"+patch.getId());
 		
-		
-		
-		generateReport(patch);
+		//generateReport(patch);
 		
 		if(username.equalsIgnoreCase("test")){
 			session.setAttribute("username", username);
@@ -81,6 +79,20 @@ public class PatchMakerController {
 		request.getSession().invalidate();
 		
 		return "login";
+	}
+	
+	@RequestMapping(value = "/releaseTracker")
+	public String getReleaseTracker() {
+
+		
+	/*	HttpSession session = request.getSession();*/
+		
+		/*session.setAttribute("username", username);
+		session.setAttribute("password", password);*/
+		
+		System.out.println("getReleaseTracker");
+		
+		return "releaseTracker";	
 	}
 	
 	@RequestMapping(value = "/generateReport")

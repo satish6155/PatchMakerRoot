@@ -26,7 +26,7 @@ body {
 
 .title {
 	color: #555;
-	font-family: 'Merienda One', sans-serif;
+	font-family: sans-serif;
 	margin-bottom:-15px;
 
 }
@@ -59,7 +59,6 @@ width:100%
 <body onload="executeAll();">
 </head>
 <body>
-<body>
 
 
 <jsp:include page='header.jsp'>
@@ -87,29 +86,31 @@ width:100%
 							   <!--  <option>Manager</option>   --> 							   
 							  </select>
 				</div>
-				<div class="form-group col-md-4">
-							 <label for="first_name"><h4>Environment</h4></label>
-							  <select class="form-control" id="bankProject" onClick="SetJiraType()">
+				<div class="form-group col-md-2">
+					<div>
+                            <label for="date"><h4>Bank Jira ID</h4></label>
+                             <select class="form-control" id="bankProject" onClick="SetJiraType()">
 							    <option value="NEOPROD">NEOPROD</option>
 							    <option value="NEOSFR">NEOSFR</option>   							   
 							  </select>
+                     </div>
 				</div>
+				<div class="form-group col-md-2">      
+                              <label for="zipcode"><h4>&nbsp</h4></label>
+                              <input type="text" class="form-control" name="bankJiraId" id="bankJiraId" onchange="BankJiraOnChange()">
+                         
+                 </div>
 				 <div class="form-group">                          
                           <div class="col-md-4">
                             <label for="date"><h4>Date</h4></label>
-                              <input type="date" class="form-control" name="date" id="date" placeholder="Date" title="Date">
+                              <input type="date" class="form-control" name="date" id="date" placeholder="Date" title="Date" onchange="">
                           </div>
               	 </div>
                </div>
 	       </div>
 	        <div class="row">  
 	     	 <div class="col-md-12">
-	      		<div class="form-group col-md-4">
-					<div>
-                            <label for="date"><h4>Bank Jira ID</h4></label>
-                              <input type="text" class="form-control" name="bankJiraId" id="bankJiraId" onchange="SetFeature()">
-                     </div>
-				</div>
+	      		
 				<div class="form-group col-md-4">
 					<div>
                             <label for="date"><h4>Product Jira ID</h4></label>
@@ -120,6 +121,12 @@ width:100%
 					<div>
                             <label for="date"><h4>Internal Jira ID</h4></label>
                               <input type="text" class="form-control" name="internalJiraId" id="internalJiraId"   value="PDIMP-">
+                     </div>
+				</div>
+				<div class="form-group col-md-4">
+					<div>
+                            <label for="date"><h4>Patch Name</h4></label>
+                              <input type="text" class="form-control" name="patchName" id="patchName">
                      </div>
 				</div>
                </div>
@@ -135,10 +142,10 @@ width:100%
 					</div>
 					<div class="form-group col-md-6">
 						<div>
-	                            <label for="date"><h4>Impact On Existing Functionality</h4></label>
-	                            <textarea id="impact" rows="2" style="width: 100%;">Not Applicable</textarea>
+	                            <label for="date"><h4>Defect Fixed</h4></label>
+	                            <textarea id="defectsFixed" rows="2"></textarea>
 	                     </div>
-					</div>
+					</div>					
                </div>
 	       </div>
 	        <div class="row">  
@@ -151,10 +158,27 @@ width:100%
 					</div>
 					<div class="form-group col-md-6">
 						<div>
-	                            <label for="date"><h4>Defect Fixed</h4></label>
-	                            <textarea id="defectsFixed" rows="2"></textarea>
+	                            <label for="date"><h4>Impact On Existing Functionality</h4></label>
+	                            <textarea id="impact" rows="2" style="width: 100%;">Not Applicable</textarea>
 	                     </div>
 					</div>
+               </div>
+	       </div>
+	       <div class="row">   
+	     	 <div class="col-md-12">
+	     	 		<div class="form-group col-md-6">
+						<div>
+	                            <label for="date"><h4>Testing Details</h4></label>
+	                            <textarea id="testingDetails" rows="2">None</textarea>
+	                     </div>
+					</div>
+		      		<div class="form-group col-md-6">
+						<div>
+	                            <label for="date"><h4>Known Bugs & Workaround</h4></label>
+	                            <textarea id="knownBugs" rows="2">None</textarea>
+	                     </div>
+					</div>	
+				
                </div>
 	       </div>
 	       <div class="row">  
@@ -183,12 +207,33 @@ width:100%
 							</textarea>
 	                     </div>
                </div>
-               <div class="form-group col-md-6">
-						<div>
-	                            <label for="date"><h4>Testing Details</h4></label>
-	                            <textarea id="testingDetails" rows="3" style="width:98%;">None</textarea>
-	                     </div>
+               <div class="col-md-6" style="margin-left:-16px;">
+		      		 <div class="form-group col-md-5">
+						
+	                            <label for="date"><h4>Patch Modules</h4></label>
+	                            <select class="form-control" id="patchModulesOptions" onchange="SetPatchModules()">
+	                            <option>Select Modules</option>
+							    <option>CAS</option>
+							    <option>Common Masters</option>   
+							    <option>ECM</option> 	
+							    <option>MFIN</option> 
+							    <option>Geotracker</option> 
+							    <option>SSO</option> 	
+							    <option>LMS</option> 				   
+							  </select>	                    
 					</div>
+					<div class="form-group col-md-3">      
+                              <label for="zipcode"><h4>&nbsp</h4></label>
+                              <input type="button" value="Remove" class="form-control btn-danger" style="width:100%;" onClick="removePatchModules()">
+                         
+                      </div>
+						<div class="form-group col-md-4">
+							<label for="date"><h4>Output</h4></label><br/>
+							<textarea id="patchModules" rows="3" style="width:109%;">
+							</textarea>
+	                     </div>
+               </div>
+               
 	       </div>
 	       <div class="row">  
 	     	 <div class="col-md-6">
@@ -244,25 +289,10 @@ width:100%
 							</textarea>
 	                     </div>
                </div>
-	       </div>
-	       <div class="row">   
-	     	 <div class="col-md-12">
-		      		<div class="form-group col-md-6">
-						<div>
-	                            <label for="date"><h4>Known Bugs & Workaround</h4></label>
-	                            <textarea id="knownBugs" rows="2">None</textarea>
-	                     </div>
-					</div>
-				<!--	<div class="form-group col-md-6">
-						<div>
-	                            <label for="date"><h4>Testing Details</h4></label>
-	                            <textarea id="testingDetails" rows="2">None</textarea>
-	                     </div>
-					</div> -->
-               </div>
-	       </div>
-	              	 
+	       </div> 
 	      	 </form>
+	      	 
+	      	 <br/>
 	      	 <a>Guru File Upload:</a>
 Select file: <br />
 <form action="UploadFile.jsp" method="post"

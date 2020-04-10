@@ -10,6 +10,24 @@ function executeAll(){
 	SetDate();
 	SetJiraType();
 }
+function BankJiraOnChange() {
+	setPatchName();
+	SetFeature();
+	
+}
+
+function setPatchName(){
+	var project,bankJira,date,dateString;
+	project = document.getElementById('project').value ;
+	bankJira  = document.getElementById('bankJiraId').value ;
+	date = ( document.getElementById('date').value).split('-') ;
+	
+	dateString = date[2]+'/'+date[1]+'/'+date[0];
+	
+	
+	document.getElementById('patchName').value = project + '_' + bankJira + '_' + dateString;
+}
+
 function SetDate()
 {
 var date = new Date();
@@ -28,6 +46,7 @@ document.getElementById('date').value = today;
 function SetJiraType(){
 	document.getElementById('bankJiraId').value = document.getElementById('bankProject').value+"-";
 	SetFeature();
+	setPatchName();
 }
 var patchEnvironmentSeq=1;
 var patchEnvironmentOptions = [];
@@ -57,6 +76,36 @@ function removePatchEnvironments(){
 		document.getElementById("patchEnvironments").innerHTML="";
 	}		
 }
+var patchModuleSeq=1;
+var patchModuleOptions = [];
+
+function SetPatchModules(){
+	var newText = document.getElementById('patchModulesOptions').value;
+	if("Select Modules"!=newText ){
+		if(document.getElementById("patchModules").innerHTML=="							" || document.getElementById("patchModules").innerHTML==""){
+			document.getElementById("patchModules").innerHTML = patchModuleSeq+". " +newText + "\n";
+		}
+		else{
+			document.getElementById("patchModules").innerHTML += patchModuleSeq+". " +newText + "\n"  ;
+		}
+		patchModuleOptions.push(document.getElementById("patchModules").innerHTML);
+		patchModuleSeq++;
+	}	
+}
+function removePatchModules(){
+	patchModuleOptions.pop();
+	if(patchModuleSeq>1){
+		patchModuleSeq--;
+		if(patchModuleOptions.length==0)
+			document.getElementById("patchModules").innerHTML ="";
+		else
+		document.getElementById("patchModules").innerHTML = patchModuleOptions[patchModuleOptions.length-1];
+	}
+	else{
+		document.getElementById("patchModules").innerHTML="";
+	}		
+}
+
 var installSeq=1;
 var InstallSteps = [];
 function SetInstallSteps(){

@@ -1,11 +1,15 @@
 @CHARSET "ISO-8859-1";
 
 /*
-@import "https://fonts.googleapis.com/css?family=Merienda+One";
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
-@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"; */
+@import "https://fonts.googleapis.com/icon?family=Material+Icons"; */
 
+@import "https://fonts.googleapis.com/css?family=Merienda+One";
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+
+
+.fa {
+	color: #4183D7;
+}
 
 a {
 	text-decoration: none;

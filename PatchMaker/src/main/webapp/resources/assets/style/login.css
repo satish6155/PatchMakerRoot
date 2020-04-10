@@ -8,6 +8,9 @@
   font-family: "Poppins", sans-serif;
   height: 100vh;
 }
+.fa{
+     color:#4183D7;
+	}
 
 a {
   color: #92badd;
