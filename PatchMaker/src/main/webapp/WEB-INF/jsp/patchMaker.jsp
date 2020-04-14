@@ -289,21 +289,49 @@ width:100%
 							</textarea>
 	                     </div>
                </div>
-               <input type="button" value="Save Details" onClick="savePatchDetails()" />
+               <input type="button" value="Save Details" onClick="savePatchDetails()" style="margin-left:40px" />
 	       </div> 
 	       
 	       	      	 </form>
 	      	 
 	      	 <br/>
-	      	 <a>Guru File Upload:</a>
-Select file: <br />
-<form action="UploadFile.jsp" method="post"
-                        enctype="multipart/form-data">
-<input type="file" name="file" size="50" />
-<br />
-<input type="submit" value="Upload File" />
-</form>
-     
+	      	<hr style="border-top: .6px solid gray;"/>
+	      	
+	
+			<h4>Upload Patch files</h4>
+			<form id="sampleUploadFrm" method="POST" action="#" enctype="multipart/form-data">
+				<!-- COMPONENT START -->
+				<div class="form-group">
+				
+				 <div class="form-group col-md-3">
+						<div>
+	                            <select class="form-control" id="patchFileType" onchange="">
+	                            <option>Select Type</option>
+	                            <option>.Class</option>
+							    <option>DB_Script</option>
+							    <option>Property</option>   
+							    <option>Other</option>   
+							  </select>
+	                     </div>
+					</div>
+					
+					<div class="input-group input-file col-md-7" name="file">
+						<span class="input-group-btn">
+							<button class="btn btn-default btn-choose" type="button">Choose</button>
+						</span> <input type="text" class="form-control"
+							placeholder='Choose files...' /> <span class="input-group-btn">
+							
+							<button type="button" class="btn btn-primary" id="uploadBtn" style="margin-left:3px; width:113%;">Submit</button>
+						</span>
+						<button class="btn btn-warning btn-reset  pull-right" type="button" style="margin-left:0px;  width:67%;">Reset</button>
+					</div>
+				</div>				
+			</form>
+	   <br/>
+	   <br/>
+	   <br/>
+	   <br/>
+	   <br/>
      	
     </div>
 <jsp:include page='footer.jsp'>
