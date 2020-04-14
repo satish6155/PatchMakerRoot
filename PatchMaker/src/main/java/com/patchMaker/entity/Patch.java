@@ -1,7 +1,5 @@
 package com.patchMaker.entity;
 
-
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -26,50 +24,53 @@ public class Patch extends BaseEntity {
 
 	@Column
 	private String bankJira;
-	
+
 	@Column
 	private String productJira;
-	
+
 	@Column
 	private String internalJira;
-	
+
 	@Column
-	private Date date;
-	
+	private String date;
+
 	@Column
 	private String defectsFixed;
-	
+
+	@Column
+	private String modules;
+
 	@Column
 	private String features;
-	
+
 	@Column
 	private String impact;
-	
+
 	@Column
 	private String installSteps;
-	
+
 	@Column
 	private String knownBugs;
-	
+
 	@Column
 	private String newFunctionality;
-	
+
 	@Column
-	private String patchEnvironments;
-	
+	private String environments;
+
 	@Column
 	private String rollbackSteps;
-	
+
 	@Column
 	private String svnRevisions;
-	
+
 	@Column
 	private String testingDetails;
-	
-	@Column 
+
+	@Column
 	private String createdBy;
-	
-	@Column 
+
+	@Column
 	private String project;
 
 	public String getPatchName() {
@@ -104,11 +105,11 @@ public class Patch extends BaseEntity {
 		this.internalJira = internalJira;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
@@ -160,14 +161,6 @@ public class Patch extends BaseEntity {
 		this.newFunctionality = newFunctionality;
 	}
 
-	public String getPatchEnvironments() {
-		return patchEnvironments;
-	}
-
-	public void setPatchEnvironments(String patchEnvironments) {
-		this.patchEnvironments = patchEnvironments;
-	}
-
 	public String getRollbackSteps() {
 		return rollbackSteps;
 	}
@@ -199,8 +192,6 @@ public class Patch extends BaseEntity {
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
-	
-	
 
 	public String getProject() {
 		return project;
@@ -210,14 +201,30 @@ public class Patch extends BaseEntity {
 		this.project = project;
 	}
 
+	public String getModules() {
+		return modules;
+	}
+
+	public void setModules(String modules) {
+		this.modules = modules;
+	}
+
+	public String getEnvironments() {
+		return environments;
+	}
+
+	public void setEnvironments(String environments) {
+		this.environments = environments;
+	}
+
 	@Override
 	public String toString() {
 		return "Patch [patchName=" + patchName + ", bankJira=" + bankJira + ", productJira=" + productJira
-				+ ", internalJira=" + internalJira + ", date=" + date + ", defectsFixed=" + defectsFixed + ", features="
-				+ features + ", impact=" + impact + ", installSteps=" + installSteps + ", knownBugs=" + knownBugs
-				+ ", newFunctionality=" + newFunctionality + ", patchEnvironments=" + patchEnvironments
-				+ ", rollbackSteps=" + rollbackSteps + ", svnRevisions=" + svnRevisions + ", testingDetails="
-				+ testingDetails + ", createdBy=" + createdBy + "]";
+				+ ", internalJira=" + internalJira + ", date=" + date + ", defectsFixed=" + defectsFixed + ", modules="
+				+ modules + ", features=" + features + ", impact=" + impact + ", installSteps=" + installSteps
+				+ ", knownBugs=" + knownBugs + ", newFunctionality=" + newFunctionality + ", environments="
+				+ environments + ", rollbackSteps=" + rollbackSteps + ", svnRevisions=" + svnRevisions
+				+ ", testingDetails=" + testingDetails + ", createdBy=" + createdBy + ", project=" + project + "]";
 	}
-		
+
 }

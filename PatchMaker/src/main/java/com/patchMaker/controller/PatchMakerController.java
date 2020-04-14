@@ -4,9 +4,11 @@ package com.patchMaker.controller;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,10 +19,13 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.patchMaker.entity.Patch;
 import com.patchMaker.service.JasperServiceImpl;
+import com.patchMaker.service.PatchServiceImpl;
 import com.patchMaker.util.SVNUtills;
 
 import net.sf.jasperreports.engine.JRException;
@@ -32,6 +37,9 @@ public class PatchMakerController {
 	
 	@Autowired
 	private JasperServiceImpl jasperServiceImpl;
+	
+	@Autowired
+	private PatchServiceImpl patchServiceImpl;
 	
 	
 	
@@ -45,10 +53,10 @@ public class PatchMakerController {
 
 		patch.setId(768L);
 		patch.setBankJira("NEOPROD-150");
-		patch.setDate(new Date());
+		patch.setDate(new SimpleDateFormat("yyyy/MM/dd").format(new Date()));
 		patch.setProject("P-1605-HDFC");
 		patch.setDefectsFixed("Dummy defects fixed");
-		patch.setPatchName(patch.getProject()+"-"+patch.getBankJira()+"-"+new SimpleDateFormat("dd/MM/yyyy").format(patch.getDate())+"-"+patch.getId());
+		patch.setPatchName(patch.getProject()+"_"+patch.getBankJira()+"_"+patch.getDate()+"_"+patch.getId());
 		
 		//generateReport(patch);
 		
@@ -80,19 +88,58 @@ public class PatchMakerController {
 		
 		return "login";
 	}
+	@RequestMapping(value="/savePatchDetails",produces="application/json",method=RequestMethod.POST)
+    public String updatePumpStatus(Patch patch) {
+		
+		
+		System.out.println(patch);
+		return "yoyo";
+	}
 	
 	@RequestMapping(value = "/releaseTracker")
-	public String getReleaseTracker() {
+	public ModelAndView getReleaseTracker(ModelAndView model, HttpServletRequest request) {
 
+		System.out.println("Inside getReleaseTracker");
 		
-	/*	HttpSession session = request.getSession();*/
+		List<Patch> patches = new ArrayList<Patch>();
 		
-		/*session.setAttribute("username", username);
-		session.setAttribute("password", password);*/
+		//patches = patchServiceImpl.findAll();
+		patches = getDummyPatches();   //this will be commented and above will be uncommented for actual data fetch
 		
-		System.out.println("getReleaseTracker");
+		Map<String,Patch> patchesMap = new HashMap<String,Patch>();
 		
-		return "releaseTracker";	
+		for (Patch thisPatch : patches) {
+			patchesMap.put(String.valueOf(thisPatch.getId()), thisPatch);
+		}		
+		
+		 HttpSession session = request.getSession();		   
+		    if(session.getAttribute("username") == null){
+		    	System.out.println("Username is null");
+		    	session.setAttribute("username", "Guest");
+		    }
+		
+	 	model.addObject("patches", patchesMap);
+		model.setViewName("releaseTracker");
+		return model;
+		
+	}
+	
+	private List<Patch> getDummyPatches(){
+		List<Patch> patches = new ArrayList<Patch>();
+		
+		Patch patch = new Patch();		
+
+		patch.setId(768L);
+		patch.setBankJira("NEOPROD-150");
+		patch.setDate(new SimpleDateFormat("yyyy/MM/dd").format(new Date()));
+		patch.setProject("P-1605-HDFC");
+		patch.setDefectsFixed("Dummy defects fixed");
+		patch.setPatchName(patch.getProject()+"_"+patch.getBankJira()+"_"+patch.getDate()+"_"+patch.getId());
+		
+			
+		patches.add(patch);
+		
+		return patches;
 	}
 	
 	@RequestMapping(value = "/generateReport")
@@ -108,7 +155,7 @@ public class PatchMakerController {
 		parameters.put("installSteps",patch.getInstallSteps());
 		parameters.put("knownBugs",patch.getKnownBugs());
 		parameters.put("newFunctionality",patch.getNewFunctionality());
-		parameters.put("patchEnvironments",patch.getPatchEnvironments());
+		parameters.put("patchEnvironments",patch.getEnvironments());
 		parameters.put("patchName",patch.getPatchName());
 		parameters.put("rollbackSteps",patch.getRollbackSteps());
 		parameters.put("svnRevisions",patch.getSvnRevisions());

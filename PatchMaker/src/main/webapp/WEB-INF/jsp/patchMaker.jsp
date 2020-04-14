@@ -289,8 +289,10 @@ width:100%
 							</textarea>
 	                     </div>
                </div>
+               <input type="button" value="Save Details" onClick="savePatchDetails()" />
 	       </div> 
-	      	 </form>
+	       
+	       	      	 </form>
 	      	 
 	      	 <br/>
 	      	 <a>Guru File Upload:</a>

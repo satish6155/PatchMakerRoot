@@ -168,3 +168,48 @@ function SetFeature(){
 	document.getElementById("defectsFixed").innerHTML ='Defect Fixed as per '+document.getElementById("bankJiraId").value;
 	
 }
+function savePatchDetails(){
+	console.log('Inside savePatchDetails.onCLick()');
+
+	var formData = 
+			{
+			 patchName : $("#patchName").val()  ,
+			 bankJira : $("#bankJiraId").val(),
+			 productJira : $("#productJiraId").val(),
+			 internalJira : $("#internalJiraId").val(),
+			 date : $("#date").val(),
+			 defectsFixed : $("#defectsFixed").val(),
+			 modules : $("#patchModules").val(),
+			 features : $("#features").val(),
+			 impact : $("#impact").val(),
+			 installSteps : $("#installSteps").val(),
+			 knownBugs : $("#knownBugs").val(),
+			 newFunctionality : $("#newFunctionality").val(),
+			 environments : $("#patchEnvironments").val(),
+			 rollbackSteps : $("#rollbackSteps").val(),
+			 svnRevisions : $("#svnRevisions").val(),
+			 testingDetails : $("#testingDetails").val(),
+			 createdBy : $("#createdBy").val(),
+			 project :$("#project").val()
+				
+			};
+	    
+	
+	
+	
+	
+
+	 $.ajax({
+	     url: "savePatchDetails",
+	      type: "post",
+	      data:formData,
+	      
+	     success: function(response) {
+	    	 console.log('Inside savePatchDetails.onCLick()');
+	     }
+	
+	     });
+	
+	
+}
+

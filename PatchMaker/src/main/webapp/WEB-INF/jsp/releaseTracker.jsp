@@ -48,6 +48,23 @@
             </tr>
         </thead>
         <tbody>
+        
+         <c:forEach items="${patches}" var="patch">
+
+    <tr>
+
+       <td><c:out value="${patch.value.id}" /></td>
+       <td><c:out value="${patch.value.date}" /></td>
+       <td><c:out value="${patch.value.modules}" /></td>
+       <td><c:out value="${patch.value.patchName}" /></td>
+       <td><c:out value="${patch.value.bankJira}" /></td>
+       <td><c:out value="${patch.value.productJira}" /></td>
+       <td><c:out value="${patch.value.internalJira}" /></td>
+       <td><c:out value="${patch.value.createdBy}" /></td>
+       <td><c:out value="${patch.value.environments}" /></td>        
+       </tr>
+       
+        </c:forEach>
             <tr><td>1</td><td>20/02/2020</td><td>MFIN</td><td>P-1605-HDFC-UnableToSubmitMemberAtBRE_20.02.2020_469</td><td>NEOPROD-112</td><td>MCAS-8595</td><td>MCAS-8595</td><td>Deepali.Jain</td><td>Production</td></tr>
 <tr><td>2</td><td>20/02/2020</td><td>MFIN</td><td>P-1605-HDFC-NEOPROD-112_20.02.2020_470</td><td>NEOPROD-112</td><td>MCAS-8595</td><td>MCAS-8595</td><td>Deepali.Jain</td><td>Production</td></tr>
 <tr><td>3</td><td>26/02/2020</td><td>CAS,CM</td><td>P-1605-HDFC-NEOPROD-88_473_26_02_2020</td><td>NEOPROD-88</td><td>CAS-103241</td><td>CAS-103241</td><td>Deepali.Jain</td><td>Production</td></tr>
