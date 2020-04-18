@@ -58,7 +58,7 @@ $P{svnRevisions} svnRevisions,
 $P{testingDetails} testingDetails
  from dual]]>
 	</queryString>
-	<field name="PATCHENVIRONMENTSS" class="java.lang.String"/>
+	<field name="PATCHENVIRONMENTS" class="java.lang.String"/>
 	<field name="DATESTRING" class="java.lang.String"/>
 	<field name="DEFECTSFIXED" class="java.lang.String"/>
 	<field name="FEATURES" class="java.lang.String"/>
