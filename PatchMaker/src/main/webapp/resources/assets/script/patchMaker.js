@@ -213,3 +213,36 @@ function savePatchDetails(){
 	
 }
 
+function uploadFiles() {
+	var patchFileType = document.getElementById('patchFileType').value;
+	alert("1::"+patchFileType);
+		var form = $("#uploadForm")[0];
+		var data = new FormData(form);
+		data.append('patchFileType', 'patchFileType');
+
+		/* data = {
+				 patchName : patchFileType 	 
+		 };*/
+		 /*data['key1'] = 'value1';
+		data['key2'] = 'value2'; */
+		//data['patchFileType'] = patchFileType;
+		 $.ajax({
+			type : "POST",
+			encType : "multipart/form-data",
+			url : "demo/"+patchFileType,
+			cache : false,
+			processData : false,
+			contentType : false,
+			data : data,
+			success : function(msg) {
+				alert("File Uploaded"+msg);
+				var d1 = document.getElementById('filePath');
+				d1.insertAdjacentHTML('afterend', '<textarea id="rollbackSteps1" rows="3" style="width:98%;">'+msg+'</textarea>');
+				$('#label_file').removeClass('hidden');
+				},
+			error : function(msg) {
+				alert("Couldn't upload file"+JSON.parse(JSON.stringify(msg)));
+			}
+		}); 
+	
+	}

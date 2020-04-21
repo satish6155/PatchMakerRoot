@@ -287,55 +287,74 @@ width:100%
 							<label for="date"><h4>Output</h4></label><br/>
 							<textarea id="rollbackSteps" rows="4" style="width:98%;">
 							</textarea>
-	                     </div>
-               </div>
-               <input type="button" value="Save Details" onClick="savePatchDetails()" style="margin-left:40px" />
-	       </div> 
-	       
-	       	      	 </form>
-	      	 
-	      	 <br/>
-	      	<hr style="border-top: .6px solid gray;"/>
-	      	
-	
-			<h4>Upload Patch files</h4>
-			<form id="sampleUploadFrm" method="POST" action="#" enctype="multipart/form-data">
-				<!-- COMPONENT START -->
-				<div class="form-group">
-				
-				 <div class="form-group col-md-3">
+					</div>
+				</div>
+				<input type="button" value="Save Details"
+					onClick="savePatchDetails()" style="margin-left: 40px" />
+			</div>
+
+		</form>
+
+		<br />
+		<hr style="border-top: .6px solid gray;" />
+
+
+		<h4>Upload Patch files</h4>
+		<form id="uploadForm" method="POST" action="#"
+			enctype="multipart/form-data">
+			<!-- COMPONENT START -->
+			<div class="form-group">
+
+				<div class="form-group col-md-3">
+					<div>
+						<select class="form-control" id="patchFileType" onchange=""
+							name="patchFile">
+							<option>Select Type</option>
+							<option>.Class</option>
+							<option>DB_Script</option>
+							<option>Property</option>
+							<option>Other</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="input-group input-file col-md-7" name="file">
+					<span class="input-group-btn"> </span><input type="file"
+						name="file" size="60" multiple="muliple" class="form-control" /> <span
+						class="input-group-btn"> <input type="button"
+						value="Upload" class="btn btn-primary"
+						style="margin-left: 10px; width: 113%;" onClick="uploadFiles()">
+					</span>
+					<button class="btn btn-warning btn-reset  pull-right" type="reset"
+						style="margin-left: 20px; width: 80%;">Reset</button>
+				</div>
+		</form>
+
+		<div class="row">
+				<div class="col-md-12">
+					<div class="form-group col-md-6">
 						<div>
-	                            <select class="form-control" id="patchFileType" onchange="">
-	                            <option>Select Type</option>
-	                            <option>.Class</option>
-							    <option>DB_Script</option>
-							    <option>Property</option>   
-							    <option>Other</option>   
-							  </select>
-	                     </div>
-					</div>
-					
-					<div class="input-group input-file col-md-7" name="file">
-						<span class="input-group-btn">
-							<button class="btn btn-default btn-choose" type="button">Choose</button>
-						</span> <input type="text" class="form-control"
-							placeholder='Choose files...' /> <span class="input-group-btn">
+							<label for="date" id="label_file" class="hidden"><h4>Files Uploaded:- Please write the war Path against each file name</h4></label>
+							<textarea id="filePath" rows="2" class="hidden">None</textarea>
 							
-							<button type="button" class="btn btn-primary" id="uploadBtn" style="margin-left:3px; width:113%;">Submit</button>
-						</span>
-						<button class="btn btn-warning btn-reset  pull-right" type="button" style="margin-left:0px;  width:67%;">Reset</button>
+						</div>
 					</div>
-				</div>				
-			</form>
-	   <br/>
-	   <br/>
-	   <br/>
-	   <br/>
-	   <br/>
-     	
-    </div>
-<jsp:include page='footer.jsp'>
-    <jsp:param name="articleId" value="Satish"/>
-</jsp:include>
+					<!-- <div class="form-group col-md-6">
+						<div>
+							<label for="date"><h4>File Names</h4></label>
+							<textarea id="fileNames" rows="2"class="hidden">None</textarea>
+						</div>
+					</div>
+ -->
+				</div>
+			</div>
+
+
+		<br /> <br /> <br /> <br /> <br />
+
+	</div>
+	<jsp:include page='footer.jsp'>
+		<jsp:param name="articleId" value="Satish" />
+	</jsp:include>
 </body>
 </html>                                		                            

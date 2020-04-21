@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,11 +19,14 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.patchMaker.entity.FileUpload;
 import com.patchMaker.entity.Patch;
 import com.patchMaker.service.JasperServiceImpl;
 import com.patchMaker.service.PatchServiceImpl;
@@ -167,5 +171,44 @@ public class PatchMakerController {
 		jasperServiceImpl.generatePDFFromJasper(templatePathWithReport, generationPath, parameters);		
 		
 	}
-	
+	@RequestMapping(value = "/demo/{fileType}",method=RequestMethod.POST)
+	public @ResponseBody String uploadFiles(@PathVariable String fileType,HttpServletRequest request,FileUpload fileUpload) throws IOException {
+		 String message = null;
+		 System.out.println("fileType:1: "+fileType);
+		 System.out.println("fileType:2: "+fileUpload.getFileType());
+		 System.out.println(":getParameter from js :"+request.getParameter("patchFileType"));
+		 System.out.println(":getParameter from jsp :"+request.getParameter("patchFile"));
+		 String fileType1 = fileType(fileType);
+		 HttpSession session = request.getSession();		   
+		try {
+			String  username = (String) session.getAttribute("username");
+			String patchName=getPatchName(username);
+			message = patchServiceImpl.extracted(request,fileType1,patchName);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return  message;
+		
+	}
+
+	private String getPatchName(String username) {
+			String name="";
+			name=username;
+			return name;
+	}
+
+	private String fileType(String fileType) {
+		System.out.println("fileType:: "+fileType);
+		String name ="Other";
+		if((".Class").equalsIgnoreCase(fileType)) {
+			name="Class_Files";
+		}else if(("DB_Script").equalsIgnoreCase(fileType)){
+			name="DB_Script";
+		}else if(("Property").equalsIgnoreCase(fileType)) {
+			name="Property";
+		}
+		return name;
+	}
+
 }
