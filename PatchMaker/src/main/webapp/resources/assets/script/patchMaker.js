@@ -6,26 +6,46 @@
 	  executeAll();
   });*/
 
+var patchId = 0;
 function executeAll(){
 	SetDate();
 	SetJiraType();
+	disableUpload();	
+}
+function disableUpload(){
+	console.log('Inside disableUpload');
+	var nodes = document.getElementById("uploadDiv").getElementsByTagName('*');
+	for(var i = 0; i < nodes.length; i++){
+	     nodes[i].disabled = true;
+	}
+}
+function enableUpload(){
+	console.log('Inside enableUpload');
+	var nodes = document.getElementById("uploadDiv").getElementsByTagName('*');
+	for(var i = 0; i < nodes.length; i++){
+	     nodes[i].disabled = false;
+	}
 }
 function BankJiraOnChange() {
 	setPatchName();
-	SetFeature();
-	
+	SetFeature();	
+}
+function patchTypeOnChange() {
+	setPatchName();
 }
 
 function setPatchName(){
-	var project,bankJira,date,dateString;
+	var project,bankJira,date,dateString, patchType;
 	project = document.getElementById('project').value ;
 	bankJira  = document.getElementById('bankJiraId').value ;
 	date = ( document.getElementById('date').value).split('-') ;
+	patchType = document.getElementById('patchType').value ;
+	console.log(patchType);
 	
-	dateString = date[2]+'/'+date[1]+'/'+date[0];
+	dateString = date[2]+'-'+date[1]+'-'+date[0];
 	
 	
-	document.getElementById('patchName').value = project + '_' + bankJira + '_' + dateString;
+	document.getElementById('patchName').value = project + '_' + bankJira + '_' + patchType +'_'+ dateString;
 }
 
 function SetDate()
@@ -177,7 +197,7 @@ function savePatchDetails(){
 			 bankJira : $("#bankJiraId").val(),
 			 productJira : $("#productJiraId").val(),
 			 internalJira : $("#internalJiraId").val(),
-			 date : $("#date").val(),
+			 patchDate : $("#date").val(),
 			 defectsFixed : $("#defectsFixed").val(),
 			 modules : $("#patchModules").val(),
 			 features : $("#features").val(),
@@ -194,10 +214,6 @@ function savePatchDetails(){
 				
 			};
 	    
-	
-	
-	
-	
 
 	 $.ajax({
 	     url: "savePatchDetails",
@@ -205,37 +221,48 @@ function savePatchDetails(){
 	      data:formData,
 	      
 	     success: function(response) {
-	    	 console.log('Inside savePatchDetails.onCLick()');
+	    	 console.log('response :' +response);
+	    	 patchId = Number (response);
+	    	 console.log(patchId);
+	    	 enableUpload();   /* Enabling File Upload Divisions */
+	    	 
 	     }
 	
-	     });
-	
+	     });	
 	
 }
 
 function uploadFiles() {
 	var patchFileType = document.getElementById('patchFileType').value;
-	alert("1::"+patchFileType);
+	
+	if(document.getElementById("file").value == "") {
+		alert("Please select files to upload!");
+		} 
+	else if(patchFileType != "SELECT") {
+		
 		var form = $("#uploadForm")[0];
 		var data = new FormData(form);
-		data.append('patchFileType', 'patchFileType');
-
-		/* data = {
-				 patchName : patchFileType 	 
-		 };*/
-		 /*data['key1'] = 'value1';
-		data['key2'] = 'value2'; */
-		//data['patchFileType'] = patchFileType;
+		
+		/*for(var pair of data.entries()) {
+			   console.log(pair[0]+ ', '+ pair[1]); 
+			}
+		*/
+		
 		 $.ajax({
 			type : "POST",
 			encType : "multipart/form-data",
-			url : "demo/"+patchFileType,
+			url : "uploadFiles/"+patchFileType,
 			cache : false,
 			processData : false,
 			contentType : false,
 			data : data,
 			success : function(msg) {
-				alert("File Uploaded"+msg);
+				
+				//document.getElementById("file").value == "";  //to reset the files selected... not working	
+				
+				resetFilesSelected();
+				
+				alert("File Uploaded\n"+msg);
 				var d1 = document.getElementById('filePath');
 				d1.insertAdjacentHTML('afterend', '<textarea id="rollbackSteps1" rows="3" style="width:98%;">'+msg+'</textarea>');
 				$('#label_file').removeClass('hidden');
@@ -244,5 +271,29 @@ function uploadFiles() {
 				alert("Couldn't upload file"+JSON.parse(JSON.stringify(msg)));
 			}
 		}); 
-	
 	}
+	else {
+		alert("Please choose file type!");
+	}
+		
+	
+}
+
+function resetFilesSelected() {
+	var f = document.getElementById('file');
+	
+	 if(f.value){
+         try{
+             f.value = ''; //for IE11, latest Chrome/Firefox/Opera...
+         }catch(err){
+         }
+         if(f.value){ //for IE5 ~ IE10
+             var form = document.createElement('form'), ref = f.nextSibling;
+             form.appendChild(f);
+             form.reset();
+             ref.parentNode.insertBefore(f,ref);
+         }
+     }
+	
+}
+

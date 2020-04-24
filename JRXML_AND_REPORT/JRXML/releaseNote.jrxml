@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="releaseNote" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Error" uuid="e1acfc63-96e3-4655-8af8-ef5072ab84f4">
 	<property name="ireport.zoom" value="1.2396694214876032"/>
 	<property name="ireport.x" value="0"/>
@@ -77,17 +78,17 @@ $P{testingDetails} testingDetails
 	<title>
 		<band height="79" splitType="Stretch">
 			<rectangle>
-				<reportElement uuid="a252e3fb-462a-4162-913a-00e3a2f1ac12" x="0" y="0" width="555" height="61"/>
+				<reportElement x="0" y="0" width="555" height="61" uuid="a252e3fb-462a-4162-913a-00e3a2f1ac12"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="839dc5cf-66d2-4a20-bdad-229dd4abddb6" x="0" y="0" width="62" height="61"/>
+				<reportElement x="0" y="0" width="62" height="61" uuid="839dc5cf-66d2-4a20-bdad-229dd4abddb6"/>
 			</rectangle>
 			<image>
-				<reportElement uuid="32b1c9b2-084a-4758-bfb9-f367c1aeae98" x="4" y="2" width="61" height="58"/>
-				<imageExpression><![CDATA["D:\\JRXML_AND_REPORT\\JRXML\\nucleusLogo.jpg"]]></imageExpression>
+				<reportElement x="4" y="2" width="61" height="58" uuid="32b1c9b2-084a-4758-bfb9-f367c1aeae98"/>
+				<imageExpression><![CDATA["D:\\PatchMakerRoot\\JRXML_AND_REPORT\\JRXML\\nucleusLogo.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement uuid="1d68c224-a639-4a1f-ab5d-4e62699a361b" x="0" y="61" width="95" height="18"/>
+				<reportElement x="0" y="61" width="95" height="18" uuid="1d68c224-a639-4a1f-ab5d-4e62699a361b"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -101,7 +102,7 @@ $P{testingDetails} testingDetails
 				<text><![CDATA[Document ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="5761d9ce-8952-450c-92ba-31043b7615f9" x="194" y="61" width="96" height="18"/>
+				<reportElement x="194" y="61" width="96" height="18" uuid="5761d9ce-8952-450c-92ba-31043b7615f9"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -115,7 +116,7 @@ $P{testingDetails} testingDetails
 				<text><![CDATA[Version No.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="f2239f60-864c-40c5-9182-8a27e9818b03" x="374" y="61" width="96" height="18"/>
+				<reportElement x="374" y="61" width="96" height="18" uuid="f2239f60-864c-40c5-9182-8a27e9818b03"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -129,7 +130,7 @@ $P{testingDetails} testingDetails
 				<text><![CDATA[Released Date]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="b060b939-e665-4363-b8b7-f5af5e3d48bf" x="95" y="61" width="99" height="18"/>
+				<reportElement x="95" y="61" width="99" height="18" uuid="b060b939-e665-4363-b8b7-f5af5e3d48bf"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -143,7 +144,7 @@ $P{testingDetails} testingDetails
 				<text><![CDATA[REL-T-01]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="6de8fa04-7d32-41d7-887c-f02403561405" x="290" y="61" width="84" height="18"/>
+				<reportElement x="290" y="61" width="84" height="18" uuid="6de8fa04-7d32-41d7-887c-f02403561405"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -157,14 +158,14 @@ $P{testingDetails} testingDetails
 				<text><![CDATA[1.0]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="08458986-af61-4564-98f8-b2bcb251845f" x="65" y="2" width="490" height="58"/>
+				<reportElement x="65" y="2" width="490" height="58" uuid="08458986-af61-4564-98f8-b2bcb251845f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Release Process Template – Customer Release Note]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="f81800ae-befc-4307-90b5-53e4c4f01583" x="470" y="61" width="85" height="18"/>
+				<reportElement x="470" y="61" width="85" height="18" uuid="f81800ae-befc-4307-90b5-53e4c4f01583"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -185,162 +186,151 @@ $P{testingDetails} testingDetails
 	<detail>
 		<band height="650" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="2a7f32df-cd86-46e1-9e29-1525000e0aae" x="0" y="4" width="136" height="20"/>
+				<reportElement x="0" y="4" width="136" height="20" uuid="2a7f32df-cd86-46e1-9e29-1525000e0aae"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Product / Project Name:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="8429f901-177a-4fde-aaa1-fb69c01c9153" x="126" y="5" width="317" height="20"/>
+				<reportElement x="126" y="5" width="317" height="20" uuid="8429f901-177a-4fde-aaa1-fb69c01c9153"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[PM-IMP-HDFC-IN-FNEO-1605-F]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="17ea3b66-af77-4d90-97f4-26c3cc6f461c" x="0" y="26" width="81" height="20"/>
+				<reportElement x="0" y="26" width="81" height="20" uuid="17ea3b66-af77-4d90-97f4-26c3cc6f461c"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Release:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="dc3c7152-2758-454b-955a-5775aacd920a" x="0" y="70" width="136" height="20"/>
+				<reportElement x="0" y="70" width="136" height="20" uuid="dc3c7152-2758-454b-955a-5775aacd920a"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Release Note Contents:]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="8b488960-d313-412e-b425-9988fbda3d4d" x="0" y="64" width="555" height="1"/>
+				<reportElement x="0" y="64" width="555" height="1" uuid="8b488960-d313-412e-b425-9988fbda3d4d"/>
 				<graphicElement>
 					<pen lineStyle="Dashed"/>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement uuid="1dfa17e0-c097-47a3-856d-d3c399076161" x="5" y="92" width="168" height="20"/>
+				<reportElement x="5" y="92" width="168" height="20" uuid="1dfa17e0-c097-47a3-856d-d3c399076161"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[1. Features in this Release:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="12bb2c23-109e-427f-90f1-46cd167aeaf8" x="0" y="147" width="220" height="20"/>
+				<reportElement x="0" y="147" width="220" height="20" uuid="12bb2c23-109e-427f-90f1-46cd167aeaf8"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[2. Impact on existing functionality:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="b0024a2b-dc60-423d-ad76-73cf284e0fbb" x="0" y="202" width="220" height="20"/>
+				<reportElement x="0" y="202" width="220" height="20" uuid="b0024a2b-dc60-423d-ad76-73cf284e0fbb"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[3. New Functionality added:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="3831a31c-b3e0-4d4e-b586-f2ff9be20916" x="0" y="259" width="220" height="19"/>
+				<reportElement x="0" y="259" width="220" height="19" uuid="3831a31c-b3e0-4d4e-b586-f2ff9be20916"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[4. Defects Fixed in this release:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="6717be28-7135-48a0-8789-6e65d9314537" x="0" y="370" width="220" height="19"/>
+				<reportElement x="0" y="370" width="220" height="19" uuid="6717be28-7135-48a0-8789-6e65d9314537"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[5. Installation Steps:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="6627a636-3dfd-40c1-bb65-6e34bc3d069d" x="0" y="462" width="374" height="19"/>
+				<reportElement x="0" y="462" width="374" height="19" uuid="6627a636-3dfd-40c1-bb65-6e34bc3d069d"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[6. Files released with their versions and checksum:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="99a6536c-ff5c-42dc-a345-0d6dcfd2156e" x="0" y="511" width="374" height="19"/>
+				<reportElement x="0" y="511" width="374" height="19" uuid="99a6536c-ff5c-42dc-a345-0d6dcfd2156e"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[7. Rollback steps:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="3ddac78b-ba33-4c87-92e6-7aaa84c4f6fb" x="0" y="313" width="374" height="19"/>
+				<reportElement x="0" y="313" width="374" height="19" uuid="3ddac78b-ba33-4c87-92e6-7aaa84c4f6fb"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[8. Testing Details:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="620a8ec4-9300-4cb5-ab10-bf3b8dbe7333" x="0" y="584" width="374" height="19"/>
+				<reportElement x="0" y="584" width="374" height="19" uuid="620a8ec4-9300-4cb5-ab10-bf3b8dbe7333"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[9. Known Issues and Work Around:]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="17931afa-6150-407a-b012-36f12120726a" x="77" y="26" width="447" height="20"/>
-				<textElement/>
+				<reportElement x="77" y="26" width="447" height="20" uuid="17931afa-6150-407a-b012-36f12120726a"/>
 				<textFieldExpression><![CDATA[$F{PATCHNAME}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="a274d279-f2b4-4071-bd05-ac1e819983c4" x="12" y="111" width="470" height="40"/>
-				<textElement/>
+				<reportElement x="12" y="111" width="470" height="40" uuid="a274d279-f2b4-4071-bd05-ac1e819983c4"/>
 				<textFieldExpression><![CDATA[$F{FEATURES}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="b87fb554-b5e3-44f2-8665-f60456ebd53d" x="12" y="167" width="470" height="40"/>
-				<textElement/>
+				<reportElement x="12" y="167" width="470" height="40" uuid="b87fb554-b5e3-44f2-8665-f60456ebd53d"/>
 				<textFieldExpression><![CDATA[$F{IMPACT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="8a0c18eb-8994-4551-9467-e83c27c6cb3f" x="12" y="222" width="470" height="40"/>
-				<textElement/>
+				<reportElement x="12" y="222" width="470" height="40" uuid="8a0c18eb-8994-4551-9467-e83c27c6cb3f"/>
 				<textFieldExpression><![CDATA[$F{NEWFUNCTIONALITY}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="0b40d08e-4ef6-4917-abe4-d0c7cdfbb8c3" x="12" y="278" width="470" height="40"/>
-				<textElement/>
+				<reportElement x="12" y="278" width="470" height="40" uuid="0b40d08e-4ef6-4917-abe4-d0c7cdfbb8c3"/>
 				<textFieldExpression><![CDATA[$F{DEFECTSFIXED}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="f02e9419-843c-4e04-958a-7f4a8ba08559" x="12" y="331" width="470" height="40"/>
-				<textElement/>
+				<reportElement x="12" y="331" width="470" height="40" uuid="f02e9419-843c-4e04-958a-7f4a8ba08559"/>
 				<textFieldExpression><![CDATA[$F{TESTINGDETAILS}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="2bb6a513-0157-4a13-8789-461e813e9a39" x="12" y="388" width="470" height="74"/>
-				<textElement/>
+				<reportElement x="12" y="388" width="470" height="74" uuid="2bb6a513-0157-4a13-8789-461e813e9a39"/>
 				<textFieldExpression><![CDATA[$F{INSTALLSTEPS}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="277cd43d-af00-4e4b-843e-b242c361458a" x="12" y="529" width="470" height="55"/>
-				<textElement/>
+				<reportElement x="12" y="529" width="470" height="55" uuid="277cd43d-af00-4e4b-843e-b242c361458a"/>
 				<textFieldExpression><![CDATA[$F{ROLLBACKSTEPS}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="df246a77-13cd-410a-bf7e-356fe9009714" x="12" y="603" width="470" height="43"/>
-				<textElement/>
+				<reportElement x="12" y="603" width="470" height="43" uuid="df246a77-13cd-410a-bf7e-356fe9009714"/>
 				<textFieldExpression><![CDATA[$F{KNOWNBUGS}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="e2dd2dd5-dab1-4b9a-a95f-f3b3a282ebf3" x="12" y="481" width="470" height="20"/>
-				<textElement/>
+				<reportElement x="12" y="481" width="470" height="20" uuid="e2dd2dd5-dab1-4b9a-a95f-f3b3a282ebf3"/>
 				<textFieldExpression><![CDATA[$F{SVNREVISIONS}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="20fdcd9e-06ba-4ac3-ad60-4f6fd1f36d6c" x="0" y="45" width="81" height="20"/>
+				<reportElement x="0" y="45" width="81" height="20" uuid="20fdcd9e-06ba-4ac3-ad60-4f6fd1f36d6c"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Related Jiras:]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="e8c11983-6d26-4964-8ae0-738e21ca1baa" x="77" y="45" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="77" y="45" width="100" height="20" uuid="e8c11983-6d26-4964-8ae0-738e21ca1baa"/>
 				<textFieldExpression><![CDATA[$F{RELATEDJIRAS}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -348,7 +338,7 @@ $P{testingDetails} testingDetails
 	<pageFooter>
 		<band height="39" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="a99155ee-3fe8-494c-8199-9eb848d68dc2" x="173" y="0" width="201" height="18"/>
+				<reportElement x="173" y="0" width="201" height="18" uuid="a99155ee-3fe8-494c-8199-9eb848d68dc2"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -362,7 +352,7 @@ $P{testingDetails} testingDetails
 				<text><![CDATA[For restricted circulation only]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="0a88cf1a-80fa-434b-9f5c-e595c2769de8" x="0" y="0" width="173" height="18"/>
+				<reportElement x="0" y="0" width="173" height="18" uuid="0a88cf1a-80fa-434b-9f5c-e595c2769de8"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -376,7 +366,7 @@ $P{testingDetails} testingDetails
 				<text><![CDATA[Template]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="8482084e-068b-4bbe-9cd0-709a9a8ad7d7" x="374" y="0" width="181" height="18"/>
+				<reportElement x="374" y="0" width="181" height="18" uuid="8482084e-068b-4bbe-9cd0-709a9a8ad7d7"/>
 				<box topPadding="2" leftPadding="4" bottomPadding="2">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>

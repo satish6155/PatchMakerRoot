@@ -18,4 +18,29 @@
 		<servlet-name>PatchMaker</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+<!-- 	File upload servlet -->
+	 <servlet>
+    <description></description>
+    <display-name>FileUploader</display-name>
+    <servlet-name>uploadFiles</servlet-name>
+    <servlet-class>com.patchMaker.controller.FileUploader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>uploadFiles</servlet-name>
+    <url-pattern>/uploadFiles</url-pattern>
+  </servlet-mapping>
+<!-- 	File upload servlet mapping ends here -->
+   <servlet>
+     <servlet-name>FileManager</servlet-name>
+     <servlet-class>com.jsos.fmanager.FileManager</servlet-class>
+     <init-param>
+      <param-name>config</param-name>
+      <param-value>d:/PatchMakerRoot/FileBrowserProperties/fmconf</param-value>
+     </init-param>
+    </servlet>
+  <servlet-mapping>
+     <servlet-name>FileManager</servlet-name>
+     <url-pattern>/servlet/FileManager</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

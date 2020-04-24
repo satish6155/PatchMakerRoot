@@ -14,8 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.patchMaker.controller.PatchMakerController;
 import com.patchMaker.dao.GenericEntityDaoImpl;
 import com.patchMaker.entity.Patch;
+import com.patchMaker.util.Values;
 
 @Service("patchServiceImpl")
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
@@ -45,20 +48,21 @@ public class PatchServiceImpl {
 		return patchDao.findAll(Patch.class);
 	}
 
-	public String extracted(HttpServletRequest request, String fileType, String patchName) throws IOException, ServletException {
+	public String writeFiles(HttpServletRequest request, String fileType, String patchName) throws IOException, ServletException {
 		String message = "" ;
 		if(ServletFileUpload.isMultipartContent(request)){
 			try {
-				System.out.println("1 :");
-                List<FileItem> multiparts = new ServletFileUpload(
-                                         new DiskFileItemFactory()).parseRequest(request);
-				System.out.println("2 :");
-            	File fileSaveDir= fileDirectory(fileType,patchName);
+				
+                List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
+				
+            	File fileSaveDir= new File(Values.BASE_DIRECTORY+File.separator+patchName+File.separator+fileType);
+            	if (!fileSaveDir.exists()) {
+                    fileSaveDir.mkdirs();
+        		}
                 for(FileItem item : multiparts){
                     if(!item.isFormField()){
                         String name = new File(item.getName()).getName();
-                        item.write(new File(fileSaveDir + File.separator + name));
-						
+                        item.write(new File(fileSaveDir + File.separator + name));						
 						  message = message + name + System.lineSeparator();
 						 
                         }
@@ -73,15 +77,6 @@ public class PatchServiceImpl {
 		}
 		return message;
 	}
-	
-	private File fileDirectory(String fileType, String patchName) {
-		//String filename = SAVE_DIR + "_" + new SimpleDateFormat("ddMMYYYY-hhmmss").format(new Date()) +"_"+ (int)(100.0 * Math.random()) ;
-        File fileSaveDir = new File("D:\\"+patchName+"\\" +fileType);
-        
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdirs();
-		}
-		return fileSaveDir;
-}
+
 }
 

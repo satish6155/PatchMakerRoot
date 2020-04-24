@@ -20,6 +20,8 @@
 					class="nav-link"><b>Release Register</b></a></li>
 			   <li class="nav-item"><a href="#" 
 			   		class="nav-link"><b>Patch Maker</b></a></li> 
+			   	<li class="nav-item"><a href="http://localhost:1011/PatchMaker/servlet/FileManager"  target="_blank"
+			   		class="nav-link"><b>File Browser</b></a></li> 
 			</ul>
 	<div class="user-options">
 			<ul class="nav navbar-nav navbar-right ml-auto">

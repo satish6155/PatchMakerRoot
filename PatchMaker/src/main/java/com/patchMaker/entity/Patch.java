@@ -1,7 +1,5 @@
 package com.patchMaker.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -19,7 +17,7 @@ public class Patch extends BaseEntity {
 	@Transient
 	private static final long serialVersionUID = -1232395859408322328L;
 
-	@Column(nullable = false, length = 255)
+	@Column
 	private String patchName;
 
 	@Column
@@ -32,7 +30,7 @@ public class Patch extends BaseEntity {
 	private String internalJira;
 
 	@Column
-	private String date;
+	private String patchDate;
 
 	@Column
 	private String defectsFixed;
@@ -73,6 +71,9 @@ public class Patch extends BaseEntity {
 	@Column
 	private String project;
 
+	@Column
+	private String type;
+
 	public String getPatchName() {
 		return patchName;
 	}
@@ -105,12 +106,12 @@ public class Patch extends BaseEntity {
 		this.internalJira = internalJira;
 	}
 
-	public String getDate() {
-		return date;
+	public String getPatchDate() {
+		return patchDate;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setPatchDate(String patchDate) {
+		this.patchDate = patchDate;
 	}
 
 	public String getDefectsFixed() {
@@ -217,14 +218,24 @@ public class Patch extends BaseEntity {
 		this.environments = environments;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	@Override
 	public String toString() {
 		return "Patch [patchName=" + patchName + ", bankJira=" + bankJira + ", productJira=" + productJira
-				+ ", internalJira=" + internalJira + ", date=" + date + ", defectsFixed=" + defectsFixed + ", modules="
-				+ modules + ", features=" + features + ", impact=" + impact + ", installSteps=" + installSteps
-				+ ", knownBugs=" + knownBugs + ", newFunctionality=" + newFunctionality + ", environments="
-				+ environments + ", rollbackSteps=" + rollbackSteps + ", svnRevisions=" + svnRevisions
-				+ ", testingDetails=" + testingDetails + ", createdBy=" + createdBy + ", project=" + project + "]";
+				+ ", internalJira=" + internalJira + ", patchDate=" + patchDate + ", defectsFixed=" + defectsFixed
+				+ ", modules=" + modules + ", features=" + features + ", impact=" + impact + ", installSteps="
+				+ installSteps + ", knownBugs=" + knownBugs + ", newFunctionality=" + newFunctionality
+				+ ", environments=" + environments + ", rollbackSteps=" + rollbackSteps + ", svnRevisions="
+				+ svnRevisions + ", testingDetails=" + testingDetails + ", createdBy=" + createdBy + ", project="
+				+ project + ", type=" + type + ", getId()=" + getId() + ", getCreationTimeStamp()="
+				+ getCreationTimeStamp() + "]";
 	}
 
 }

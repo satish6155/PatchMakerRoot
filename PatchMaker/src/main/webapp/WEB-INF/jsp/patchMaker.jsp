@@ -100,12 +100,29 @@ width:100%
                               <input type="text" class="form-control" name="bankJiraId" id="bankJiraId" onchange="BankJiraOnChange()">
                          
                  </div>
+                 <div class="form-group col-md-2">
+					<div>
+                            <label for="type"><h4>Patch Type</h4></label>
+                             <select class="form-control" id="patchType" onchange="patchTypeOnChange()" >
+							    <option value="Fix">Permanent Fix</option>
+							    <option value="Data_Repair">Data Repair</option>
+							    <option value="Testing">Testing</option>   							   
+							  </select>
+                     </div>
+				</div>
+				<div class="form-group col-md-2">
+					<div>
+                            <label for="date"><h4>Date</h4></label>
+                             <input type="date" class="form-control" name="date" id="date" placeholder="Date" title="Date" onchange="">
+                     </div>
+				</div>
+             <!--    
 				 <div class="form-group">                          
                           <div class="col-md-4">
                             <label for="date"><h4>Date</h4></label>
                               <input type="date" class="form-control" name="date" id="date" placeholder="Date" title="Date" onchange="">
                           </div>
-              	 </div>
+              	 </div>    --> 
                </div>
 	       </div>
 	        <div class="row">  
@@ -289,13 +306,16 @@ width:100%
 							</textarea>
 					</div>
 				</div>
-				<input type="button" value="Save Details"
-					onClick="savePatchDetails()" style="margin-left: 40px" />
+				
+				<input type="button" value="Save Details" onClick="savePatchDetails()" style="margin-left: 40px" />
 			</div>
 
 		</form>
 
 		<br />
+		
+		
+		<div id="uploadDiv">
 		<hr style="border-top: .6px solid gray;" />
 
 
@@ -307,20 +327,20 @@ width:100%
 
 				<div class="form-group col-md-3">
 					<div>
-						<select class="form-control" id="patchFileType" onchange=""
+						<select class="form-control" id="patchFileType" 
 							name="patchFile">
-							<option>Select Type</option>
-							<option>.Class</option>
-							<option>DB_Script</option>
-							<option>Property</option>
-							<option>Other</option>
+							<option value="SELECT">Select Type</option>
+							<option value="Class_Files">.Class</option>
+							<option value="DB_Scripts">DB_Script</option>
+							<option value="Properties">Property</option>
+							<option value="Others">Other</option>  
 						</select>
 					</div>
 				</div>
 
 				<div class="input-group input-file col-md-7" name="file">
 					<span class="input-group-btn"> </span><input type="file"
-						name="file" size="60" multiple="muliple" class="form-control" /> <span
+						name="file" id="file" size="60" multiple="muliple" class="form-control" /> <span
 						class="input-group-btn"> <input type="button"
 						value="Upload" class="btn btn-primary"
 						style="margin-left: 10px; width: 113%;" onClick="uploadFiles()">
@@ -349,7 +369,7 @@ width:100%
 				</div>
 			</div>
 
-
+</div>
 		<br /> <br /> <br /> <br /> <br />
 
 	</div>

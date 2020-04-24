@@ -1,0 +1,97 @@
+#
+#  Simple configuration file
+#
+
+
+
+
+ base (initial) directory. By default it will be the root directory of your servletunner.
+dir=d:/PatchMakerRoot/
+
+# title (by default is empty - no title)
+title=My Files
+
+# style. Describes a link for your CSS style file. By default is empty. E.g.:
+#style=d:/PatchMakerRoot/FileBrowserProperties/design.css
+
+# background color (by default is #3366FF)
+bgcolor=#FFFFFF
+
+# foreground color (by default is #FFFFFF)
+fgcolor=#3366FF
+
+# color for visited directories (default is #FFFF00)
+visicolor=your_color
+
+#font size (by default is current browser's font)
+size=3
+
+#font face (by default is current browser's font)
+face=Arial
+
+# file extensions for visible files. Here you can set commas separated
+# list of extensions. Only such files will be visible. By default
+# this parameter is empty (all files are visible)
+show=txt,xml,ini
+
+# file extensions for text editor. Here you can set commas separated list of
+# extensions. All such files are editable through this servlet.
+# By default it is:  txt,htm,shtml,html,java,jsp,cpp,h,jsp,pl,sh,csh,xml,bat,ini
+# E.g. :
+edit=log,ini,htm,,txt
+
+# head. You can set here some file contains any html-code. This code will be
+# outputted at the beginning of the each page. So you can set for example some banners.
+# By default this value is empty
+#head=path_to_your_file
+
+# Look and feel mode. By default it is 1 (list of files like Norton Commander for example)
+# 2 means Explorer like view
+mode=1
+
+# security mode. Default value is 0 - user may see any available directory
+# on your server. If you set it to 1 user may see only initial
+# directory and any directory below
+security=1
+
+# enable/disable functions. Possible values are 1 (enabled) or
+# 0 (disabled). By default all actions are enabled.
+
+# enable/disable uploading. Default value is 1
+upload_enabled=1
+
+# enable/disable edit. Default value is 1
+edit_enabled=1
+
+# enable/disable create directories
+mkdir_enabled=1
+
+# enable/disable copy files
+copy_enabled=1
+
+# enable/disable move/rename files
+rename_enabled=1
+
+# enable/disable delete files
+delete_enabled=1
+
+# how to open files. Default value is 0 - open in place, 1 - open in the
+# separate window
+window=0
+
+# maximal size for uploaded file (in bytes). By default size is unlimited
+maxFileSize=10000
+
+# authorization flag (See Authorization section below)
+#authorized=attribute_name
+
+# login page
+#login=your_page
+
+# Date format. By default will use full date.
+# You may set here format for date. E.g.:
+date=dd/MM/yyyy
+
+# localization support. You can set character encoding for input parameters
+# here. Default value is ISO-8859-1
+encoding=Cp1251
