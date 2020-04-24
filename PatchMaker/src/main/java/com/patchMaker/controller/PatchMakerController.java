@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +47,7 @@ public class PatchMakerController {
 
 		Patch patch = new Patch();
 
-		patch = patchServiceImpl.findOne(50000L);
+		//patch = patchServiceImpl.findOne(50000L);
 		
 		/*patch.setId(768L);
 		patch.setBankJira("NEOPROD-150");

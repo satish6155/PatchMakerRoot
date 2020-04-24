@@ -63,7 +63,7 @@ public class PatchServiceImpl {
                     if(!item.isFormField()){
                         String name = new File(item.getName()).getName();
                         item.write(new File(fileSaveDir + File.separator + name));						
-						  message = message + name + System.lineSeparator();
+						  message = message +fileType + ":" + name+";";
 						 
                         }
                 }

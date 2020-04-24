@@ -1,26 +1,33 @@
-/**
- * 
- */
 
-/*  $(document).ready(function()  {
-	  executeAll();
-  });*/
+/*
+ * ---- TO-DO
+ * When deleting an file from UI, same should get deleted from folder*/
 
 var patchId = 0;
+var allFileItems = [];
+
+var fileDetail = function(id, type, name, path) {
+    this.id = id;
+    this.type = type;
+    this.name = name;
+    this.path = path;
+};
 function executeAll(){
 	SetDate();
 	SetJiraType();
 	disableUpload();	
+	document.querySelector('.files__list').addEventListener('click', deleteFileRow);
+	document.querySelector('.files__list').addEventListener('change', saveFilePath);
 }
 function disableUpload(){
-	console.log('Inside disableUpload');
+	//console.log('Inside disableUpload');
 	var nodes = document.getElementById("uploadDiv").getElementsByTagName('*');
 	for(var i = 0; i < nodes.length; i++){
 	     nodes[i].disabled = true;
 	}
 }
 function enableUpload(){
-	console.log('Inside enableUpload');
+	//console.log('Inside enableUpload');
 	var nodes = document.getElementById("uploadDiv").getElementsByTagName('*');
 	for(var i = 0; i < nodes.length; i++){
 	     nodes[i].disabled = false;
@@ -40,7 +47,7 @@ function setPatchName(){
 	bankJira  = document.getElementById('bankJiraId').value ;
 	date = ( document.getElementById('date').value).split('-') ;
 	patchType = document.getElementById('patchType').value ;
-	console.log(patchType);
+	//console.log(patchType);
 	
 	dateString = date[2]+'-'+date[1]+'-'+date[0];
 	
@@ -189,7 +196,7 @@ function SetFeature(){
 	
 }
 function savePatchDetails(){
-	console.log('Inside savePatchDetails.onCLick()');
+	//console.log('Inside savePatchDetails.onCLick()');
 
 	var formData = 
 			{
@@ -221,9 +228,9 @@ function savePatchDetails(){
 	      data:formData,
 	      
 	     success: function(response) {
-	    	 console.log('response :' +response);
+	    	 //console.log('response :' +response);
 	    	 patchId = Number (response);
-	    	 console.log(patchId);
+	    	 //console.log(patchId);
 	    	 enableUpload();   /* Enabling File Upload Divisions */
 	    	 
 	     }
@@ -244,7 +251,7 @@ function uploadFiles() {
 		var data = new FormData(form);
 		
 		/*for(var pair of data.entries()) {
-			   console.log(pair[0]+ ', '+ pair[1]); 
+			   //console.log(pair[0]+ ', '+ pair[1]); 
 			}
 		*/
 		
@@ -256,19 +263,17 @@ function uploadFiles() {
 			processData : false,
 			contentType : false,
 			data : data,
-			success : function(msg) {
+			success : function(response) {
 				
-				//document.getElementById("file").value == "";  //to reset the files selected... not working	
+				resetFilesSelected();	
 				
-				resetFilesSelected();
+				response = response.substring(0, response.length - 1);			
 				
-				alert("File Uploaded\n"+msg);
-				var d1 = document.getElementById('filePath');
-				d1.insertAdjacentHTML('afterend', '<textarea id="rollbackSteps1" rows="3" style="width:98%;">'+msg+'</textarea>');
-				$('#label_file').removeClass('hidden');
+				addFilesToList(response);
+				
 				},
-			error : function(msg) {
-				alert("Couldn't upload file"+JSON.parse(JSON.stringify(msg)));
+			error : function(response) {
+				alert("Couldn't upload file"+JSON.parse(JSON.stringify(response)));
 			}
 		}); 
 	}
@@ -293,7 +298,130 @@ function resetFilesSelected() {
              form.reset();
              ref.parentNode.insertBefore(f,ref);
          }
-     }
+	 }	
+}
+
+function openFileBrowser() {
+	window.open('http://localhost:1011/PatchMaker/servlet/FileManager?d:/PatchMakerRoot/FileBrowserProperties', '_blank');
+}
+
+
+
+function renderFileList() {
 	
+	var htmlStringBase = `<div class="item clearfix" id="files-%id%">
+	    <div class="item__description" style="width:120px;">%type%</div>
+	     <div class="item__description">%name%</div>
+	    <div class="right clearfix">
+	        <div class="item__value">
+	        	<input type="text" class="form-control" id="file-path-%id%" style="width:600px; margin-top:-5px; margin-bottom:-5px;" 
+	        		placeholder="Enter destination file path" value="%path%">
+	        </div>
+	        <div class="item__delete">
+	            <button class="item__delete--btn">
+	                <i class="ion-ios-close-outline"></i>
+	            </button>
+	        </div>
+	    </div>
+	</div>`;
+	
+	document.getElementById('fileListTable').innerHTML='';
+	
+	allFileItems.forEach(function(obj) {
+		
+		var nameTrimmed = obj.name;
+		
+		if(obj.name.length>30){
+			nameTrimmed = obj.name.substring(0,30)+' ...';
+		}
+							
+		htmlString =  htmlStringBase.replace('%id%', obj.id).replace('%id%', obj.id).replace('%type%', obj.type).replace('%name%', nameTrimmed).replace('%path%', obj.path);
+		console.log(htmlString);
+		var d1 = document.getElementById('fileListTable');
+		d1.insertAdjacentHTML('beforeend', htmlString);			
+			
+	});		
+	
+}
+
+function addFilesToList(response){
+	
+	var filesArray = response.split(";");
+
+	filesArray.forEach(function(cur) {
+		
+		var ID;
+				
+		if (allFileItems.length >0) {
+			ID = allFileItems[allFileItems.length-1].id + 1;
+        } else {        	
+            ID = 0;
+        }
+		var newFileItem = new fileDetail(ID, cur.split(":")[0], cur.split(":")[1], '');
+		
+		allFileItems.push(newFileItem);
+		
+	});			
+	renderFileList();	
+}
+
+function removeFileFromUI(selectorID) {
+    
+    var el = document.getElementById(selectorID);
+    el.parentNode.removeChild(el);
+    
+}
+function removeFileItem(itemID){
+	
+        var ids, index, id;
+        
+        id = parseInt((itemID.split('-')[1]),10);
+        
+        ids = allFileItems.map(function(current) {
+        	console.log(current.id);
+            return current.id;
+        });
+
+        index = ids.indexOf(id);
+        if (index !== -1) {
+            allFileItems.splice(index, 1);
+            removeFileFromUI(itemID);
+        } 
+}
+
+var deleteFileRow = function(event) {
+    var itemID, splitID, type, ID;
+    
+    itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+
+    if (itemID && itemID.includes('files-')) {
+    	removeFileItem(itemID);
+    }
+    else{
+    	console.log('ID NOT DEFINED');
+    }    
+	
+};
+
+function saveFilePath(event){
+	
+	var itemID, index, filePath, id, ids;
+    itemID = event.target.id;
+    
+    filePath = document.getElementById(itemID).value ;
+    
+    id = parseInt((itemID.split('-')[2]),10);
+    
+    ids = allFileItems.map(function(current) {
+        return current.id;
+    });
+
+    index = ids.indexOf(id);
+    
+    if (index !== -1) {
+        allFileItems[index].path = filePath;
+       
+    } 
+    
 }
 

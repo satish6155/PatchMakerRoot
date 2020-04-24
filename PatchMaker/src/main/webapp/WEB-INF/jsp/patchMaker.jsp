@@ -12,6 +12,8 @@
 <!-- Order of import is very important in below imports, bootstrap.min.css should always be imported first -->
 <link href="<c:url value="/resources/assets/style/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/assets/style/patchMaker.css"/>" rel="stylesheet"> 
+
+<link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
  
 <!-- Order of import is very important in below imports, jquery.min.js should always be imported first -->
 <script src="<c:url value="/resources/assets/script/jquery.min.js" />"></script>
@@ -23,6 +25,76 @@
 body {
 	/* background-color: #D7D9DC !important; */
 }
+
+/* file list style starts here */
+
+/* .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+ */
+
+.right { float: right; }
+.red { color: #FF5049 !important; }
+.red-focus:focus { border: 1px solid #FF5049 !important; }
+
+
+.files {
+    float: left;
+    width: 475px;
+    margin-right: 50px;
+}
+
+.item {
+    padding: 13px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.item:first-child { border-top: 1px solid #e7e7e7; }
+.item:nth-child(even) { background-color: #f7f7f7; }
+
+.item__description {
+    float: left;
+}
+
+.item__value {
+    float: left;
+    transition: transform 0.3s;
+}
+
+.files .item__value,
+.files .item__delete--btn {
+    color: #28B9B5;
+}
+
+
+.item__delete {
+    float: left;
+}
+
+.item__delete--btn {
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    display: block;
+    margin-left: 50px;
+}
+
+/*  .item__delete--btn:focus { outline: none; }
+.item__delete--btn:active { transform: translateY(2px); }
+
+.item:hover .item__delete--btn { display: block; }
+.item:hover .item__value { transform: translateX(-20px); }
+.item:hover .item__percentage { transform: translateX(-20px); }
+ */
+
+
+/* file list style ends here */
 
 .title {
 	color: #555;
@@ -314,8 +386,8 @@ width:100%
 
 		<br />
 		
-		
-		<div id="uploadDiv">
+	
+	<div id="uploadDiv" class="col-md-12 col-sm-6 col-xs-12">
 		<hr style="border-top: .6px solid gray;" />
 
 
@@ -325,52 +397,55 @@ width:100%
 			<!-- COMPONENT START -->
 			<div class="form-group">
 
-				<div class="form-group col-md-3">
-					<div>
-						<select class="form-control" id="patchFileType" 
-							name="patchFile">
-							<option value="SELECT">Select Type</option>
-							<option value="Class_Files">.Class</option>
-							<option value="DB_Scripts">DB_Script</option>
-							<option value="Properties">Property</option>
-							<option value="Others">Other</option>  
-						</select>
-					</div>
-				</div>
-
-				<div class="input-group input-file col-md-7" name="file">
-					<span class="input-group-btn"> </span><input type="file"
-						name="file" id="file" size="60" multiple="muliple" class="form-control" /> <span
-						class="input-group-btn"> <input type="button"
-						value="Upload" class="btn btn-primary"
-						style="margin-left: 10px; width: 113%;" onClick="uploadFiles()">
-					</span>
-					<button class="btn btn-warning btn-reset  pull-right" type="reset"
-						style="margin-left: 20px; width: 80%;">Reset</button>
-				</div>
-		</form>
-
-		<div class="row">
-				<div class="col-md-12">
-					<div class="form-group col-md-6">
+					<div class="form-group col-md-3">
 						<div>
-							<label for="date" id="label_file" class="hidden"><h4>Files Uploaded:- Please write the war Path against each file name</h4></label>
-							<textarea id="filePath" rows="2" class="hidden">None</textarea>
-							
+							<select class="form-control" id="patchFileType" 
+								name="patchFile">
+								<option value="SELECT">Select Type</option>
+								<option value="Class_Files">.Class</option>
+								<option value="DB_Scripts">DB_Script</option>
+								<option value="Properties">Property</option>
+								<option value="Others">Other</option>  
+							</select>
 						</div>
 					</div>
-					<!-- <div class="form-group col-md-6">
-						<div>
-							<label for="date"><h4>File Names</h4></label>
-							<textarea id="fileNames" rows="2"class="hidden">None</textarea>
+					
+					<div class="input-group input-file col-md-9" name="file">
+						<div class = "col-md-6">
+							<input type="file" name="file" id="file" size="60" multiple="muliple" class="form-control" /> 
 						</div>
+						<div class = "col-md-2">
+							<input type="button" value="Upload" class="btn btn-primary" style="width:100%; margin-left:-20px" onClick="uploadFiles()">
+						</div>
+						<div class = "col-md-2">
+							<button class="btn btn-warning btn-reset" type="reset" style="width:100%; margin-left:-40px">Reset</button>	
+						</div>
+						<div class = "col-md-2">
+							<button class="btn btn-info" type="reset" style="width:100%; float:right" onClick="openFileBrowser()">View Files</button>	
+						</div>			
 					</div>
- -->
-				</div>
 			</div>
+		</form>
+				 <div class="files__list" id="fileListTable">                       
+                        
+                      <!--   <div class="item clearfix" id="files-0">
+                            <div class="item__description" style="width:120px;">Class File</div>
+                             <div class="item__description">SLI-Pre-prited Docs Cnfiguration</div>
+                            <div class="right clearfix">
+                                <div class="item__value">
+                                	<input type="text" class="form-control" style="width:600px; margin-top:-5px; margin-bottom:-5px;" placeholder="Enter destination file path">
+                                </div>
+                                <div class="item__delete">
+                                    <button class="item__delete--btn">
+                                        <i class="ion-ios-close-outline"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div> -->
+                    
 
-</div>
-		<br /> <br /> <br /> <br /> <br />
+				</div>
+	<br /> <br /> <br /> <br /> <br />	
 
 	</div>
 	<jsp:include page='footer.jsp'>
