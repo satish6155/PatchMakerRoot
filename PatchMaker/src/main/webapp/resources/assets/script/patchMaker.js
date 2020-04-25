@@ -3,9 +3,14 @@
  * ---- TO-DO
  * When deleting an file from UI, same should get deleted from folder*/
 
-var patchId = 0;
+var patchId;
 var allFileItems = [];
 var bottomDivHeight = 500;
+
+var patchBean = function(id, fileDetails) {
+	this.id = id;
+	this.fileDetails = fileDetails;
+}
 
 var fileDetail = function(id, type, name, path) {
     this.id = id;
@@ -201,6 +206,8 @@ function savePatchDetails(){
 
 	var formData = 
 			{
+			
+			 id	: patchId,
 			 patchName : $("#patchName").val()  ,
 			 bankJira : $("#bankJiraId").val(),
 			 productJira : $("#productJiraId").val(),
@@ -236,11 +243,8 @@ function savePatchDetails(){
 	    	 
 	    	 document.getElementById("bottomDiv").style.display = null;  //show file upload div
 	    	 scrollToFileUpload();
-	    	 
-	    	 
-	     }
-	
-	     });	
+	     }	
+	   });	
 	
 }
 
@@ -347,7 +351,7 @@ function renderFileList() {
 			
 	});		
 	
-	if(allFileItems.length<7){		
+	if(allFileItems.length<6){		
 		document.getElementById("bottomDiv").style.height = bottomDivHeight+"px";
 	} else {
 		document.getElementById("bottomDiv").style.height = null;
@@ -381,7 +385,7 @@ function removeFileFromUI(selectorID) {
     var el = document.getElementById(selectorID);
     el.parentNode.removeChild(el);
     
-    if(allFileItems.length<7){		
+    if(allFileItems.length<6){		
 		document.getElementById("bottomDiv").style.height = bottomDivHeight+"px";
 	}
     
@@ -434,10 +438,8 @@ function saveFilePath(event){
     index = ids.indexOf(id);
     
     if (index !== -1) {
-        allFileItems[index].path = filePath;
-       
-    } 
-    
+        allFileItems[index].path = filePath;       
+    }     
 }
 
 function scrollToFileUpload(){
@@ -448,7 +450,31 @@ function scrollToFileUpload(){
             scrollTop: target.offset().top
         }, 1000);
         return false;
-    }
-   
+    }   
+}
+
+function saveFileDetails() {
+	
+	 console.log('here');
+	 
+	 var filesJson = JSON.stringify({
+
+         'files' : allFileItems 
+
+     });   
+
+	$.ajax({
+	 url: "saveFileDetails",
+	  type: "post",
+	  data:filesJson,
+	  dataType: "html",          
+      contentType: 'application/json',
+      mimeType: 'application/json',
+	  
+	 success: function(response) {
+		 console.log('response :' +response);
+	
+	 }	
+	});	
 }
 

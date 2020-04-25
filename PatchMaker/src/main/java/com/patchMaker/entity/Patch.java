@@ -74,6 +74,9 @@ public class Patch extends BaseEntity {
 	@Column
 	private String type;
 
+	@Column
+	private String filesJson;
+
 	public String getPatchName() {
 		return patchName;
 	}
@@ -226,6 +229,14 @@ public class Patch extends BaseEntity {
 		this.type = type;
 	}
 
+	public String getFilesJson() {
+		return filesJson;
+	}
+
+	public void setFilesJson(String filesJson) {
+		this.filesJson = filesJson;
+	}
+
 	@Override
 	public String toString() {
 		return "Patch [patchName=" + patchName + ", bankJira=" + bankJira + ", productJira=" + productJira
@@ -234,8 +245,9 @@ public class Patch extends BaseEntity {
 				+ installSteps + ", knownBugs=" + knownBugs + ", newFunctionality=" + newFunctionality
 				+ ", environments=" + environments + ", rollbackSteps=" + rollbackSteps + ", svnRevisions="
 				+ svnRevisions + ", testingDetails=" + testingDetails + ", createdBy=" + createdBy + ", project="
-				+ project + ", type=" + type + ", getId()=" + getId() + ", getCreationTimeStamp()="
-				+ getCreationTimeStamp() + "]";
+				+ project + ", type=" + type + ", filesJson=" + filesJson + ", getId()=" + getId()
+				+ ", getCreationTimeStamp()=" + getCreationTimeStamp() + ", toString()=" + super.toString()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
 	}
 
 }

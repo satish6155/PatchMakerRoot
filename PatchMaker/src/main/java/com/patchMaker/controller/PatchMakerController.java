@@ -17,12 +17,16 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.patchMaker.bean.FilesWrapper;
 import com.patchMaker.entity.Patch;
 import com.patchMaker.service.JasperServiceImpl;
 import com.patchMaker.service.PatchServiceImpl;
@@ -47,14 +51,15 @@ public class PatchMakerController {
 
 		Patch patch = new Patch();
 
-		//patch = patchServiceImpl.findOne(50000L);
-		
-		/*patch.setId(768L);
-		patch.setBankJira("NEOPROD-150");
-		patch.setPatchDate("2020-04-24");
-		patch.setProject("P-1605-HDFC");
-		patch.setDefectsFixed("Dummy defects fixed");
-		patch.setPatchName(patch.getProject()+"_"+patch.getBankJira()+"_"+patch.getPatchDate()+"_"+patch.getId());*/
+		// patch = patchServiceImpl.findOne(50000L);
+
+		/*
+		 * patch.setId(768L); patch.setBankJira("NEOPROD-150");
+		 * patch.setPatchDate("2020-04-24"); patch.setProject("P-1605-HDFC");
+		 * patch.setDefectsFixed("Dummy defects fixed");
+		 * patch.setPatchName(patch.getProject()+"_"+patch.getBankJira()+"_"+patch.
+		 * getPatchDate()+"_"+patch.getId());
+		 */
 
 		// generateReport(patch);
 
@@ -90,11 +95,32 @@ public class PatchMakerController {
 	public @ResponseBody String savePatchDetails(HttpServletRequest request, Patch patch) {
 
 		HttpSession session = request.getSession();
-		session.setAttribute("patchName", patch.getPatchName());
 
+		System.out.println("Patch before save : " + patch);
 		patchServiceImpl.save(patch);
 		System.out.println(patch);
+		session.setAttribute("patchName", patch.getPatchName());
+		session.setAttribute("patchId", patch.getId());
 		return String.valueOf(patch.getId());
+	}
+
+	@RequestMapping(value = "/saveFileDetails", produces = "application/json", method = RequestMethod.POST)
+	public @ResponseBody String saveFileDetails(HttpServletRequest request, @RequestBody FilesWrapper files) {
+
+		HttpSession session = request.getSession();
+		
+		Long patchId = (Long) session.getAttribute("patchId");
+		ObjectMapper mapper = new ObjectMapper();
+
+		try {
+			String filesJson = mapper.writeValueAsString(files);
+			
+			patchServiceImpl.SaveFilesJson(patchId, filesJson);
+			
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return "success";
 	}
 
 	@RequestMapping(value = "/releaseTracker")
@@ -105,7 +131,8 @@ public class PatchMakerController {
 		List<Patch> patches = new ArrayList<Patch>();
 
 		patches = patchServiceImpl.findAll();
-		//patches = getDummyPatches(); // this will be commented and above will be uncommented for actual data fetch
+		// patches = getDummyPatches(); // this will be commented and above will be
+		// uncommented for actual data fetch
 
 		Map<String, Patch> patchesMap = new HashMap<String, Patch>();
 
@@ -156,10 +183,13 @@ public class PatchMakerController {
 		String templatePathWithReport = Values.JRXML_DIRECTORY + File.separator + Values.RELEASE_NOTE_JRXML_NAME;
 		String generationPath = Values.RELEASE_NOTE_PDF_DIRECTORY + File.separator + Values.RELEASE_NOTE_PDF_NAME;
 		/*
-		
-		String templatePathWithReport = "D:\\PatchMakerRoot\\JRXML_AND_REPORT\\JRXML\\releaseNote.jrxml";
-		String generationPath = "D:\\PatchMakerRoot\\JRXML_AND_REPORT\\GENERATED_REPORT\\RELEASE_NOTE.pdf";*/
-		
+		 * 
+		 * String templatePathWithReport =
+		 * "D:\\PatchMakerRoot\\JRXML_AND_REPORT\\JRXML\\releaseNote.jrxml"; String
+		 * generationPath =
+		 * "D:\\PatchMakerRoot\\JRXML_AND_REPORT\\GENERATED_REPORT\\RELEASE_NOTE.pdf";
+		 */
+
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("defectsFixed", patch.getDefectsFixed());
 		parameters.put("features", patch.getFeatures());
@@ -185,13 +215,11 @@ public class PatchMakerController {
 			HttpServletResponse response) throws IOException {
 
 		String message = null;
-		
+
 		HttpSession session = request.getSession();
 		String patchName = (String) session.getAttribute("patchName");
 
 		System.out.println("patchName : " + patchName);
-		
-				
 
 		try {
 			message = patchServiceImpl.writeFiles(request, fileType, patchName);

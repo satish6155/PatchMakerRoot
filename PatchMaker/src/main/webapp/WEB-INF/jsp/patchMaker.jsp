@@ -37,6 +37,12 @@ body {
 }
  */
 
+.btn {
+ 
+ font-weight: bold;
+ 
+ }
+
 .right { float: right; }
 .red { color: #FF5049 !important; }
 .red-focus:focus { border: 1px solid #FF5049 !important; }
@@ -290,7 +296,7 @@ width:100%
 					</div>
 					<div class="form-group col-md-3">      
                               <label for="zipcode"><h4>&nbsp</h4></label>
-                              <input type="button" value="Remove" class="form-control btn-danger" style="width:100%;" onClick="removePatchEnvironments()">
+                              <input type="button" value="Remove" class="form-control btn btn-danger" style="width:100%;" onClick="removePatchEnvironments()">
                          
                       </div>
 						<div class="form-group col-md-4">
@@ -316,7 +322,7 @@ width:100%
 					</div>
 					<div class="form-group col-md-3">      
                               <label for="zipcode"><h4>&nbsp</h4></label>
-                              <input type="button" value="Remove" class="form-control btn-danger" style="width:100%;" onClick="removePatchModules()">
+                              <input type="button" value="Remove" class="form-control btn btn-danger" style="width:100%;" onClick="removePatchModules()">
                          
                       </div>
 						<div class="form-group col-md-4">
@@ -344,7 +350,7 @@ width:100%
 					</div>
 					<div class="form-group col-md-3">      
                               <label for="zipcode"><h4>&nbsp</h4></label>
-                              <input type="button" value="Remove" class="form-control btn-danger" style="width:113%;" onClick="removeInstallStep()">
+                              <input type="button" value="Remove" class="form-control btn btn-danger" style="width:113%;" onClick="removeInstallStep()">
                          
                       </div>
 				</div>
@@ -370,7 +376,7 @@ width:100%
 					</div>
 					<div class="form-group  col-md-3">      
                               <label for="zipcode"><h4>&nbsp</h4></label>
-                              <input type="button" value="Remove" class="form-control btn-danger" style="width:113%;" onClick="removeRollbackStep()">
+                              <input type="button" value="Remove" class="form-control btn btn-danger" style="width:113%;" onClick="removeRollbackStep()">
                          
                       </div>
 				</div>
@@ -389,6 +395,7 @@ width:100%
 		
 	</div>
 	<div class="container main" id="bottomDiv" style="margin-top:40px; margin-bottom:50px; display: none;"> 
+<!-- 	<div class="container main" id="bottomDiv" style="margin-top:40px; margin-bottom:50px;">  -->
 	
 	<div id="uploadDiv" class="col-md-12 col-sm-6 col-xs-12" style="border-style: dashed;">
 		<!-- <hr style="border-top: .6px solid gray;" /> -->
@@ -448,7 +455,12 @@ width:100%
                     
 
 				</div>
-	<br /> <br /> <br /> <br /> <br />	
+				
+				<br /> <br />  
+				<div style="padding-left:15px;padding-right:10px; margin-top:50px; margin-bottom:30px;">
+				<input type="button" class="form-control btn btn-success" value="Check-In Files And Download Patch Zip" onClick="saveFileDetails()" />
+			</div>
+	
 
 	</div>
 		

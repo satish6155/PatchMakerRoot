@@ -78,5 +78,13 @@ public class PatchServiceImpl {
 		return message;
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public void SaveFilesJson(Long patchId, String filesJson) {
+
+		Patch patch = patchDao.findOne(Patch.class, patchId);		
+		patch.setFilesJson(filesJson);		
+		patchDao.update(patch);
+	}
+
 }
 
