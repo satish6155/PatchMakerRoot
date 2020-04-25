@@ -24,6 +24,8 @@
 
 body {
 	/* background-color: #D7D9DC !important; */
+	
+	background-color: #f7f7f7;
 }
 
 /* file list style starts here */
@@ -100,7 +102,7 @@ body {
 	color: #555;
 	font-family: sans-serif;
 	margin-bottom:-15px;
-
+	margin-top: -1px;
 }
 .testDiv {
 	border: 1px;
@@ -108,14 +110,15 @@ body {
 	border-style: solid;
 }
 .main {
- background:#ffffff; 
-/* border: 1px; 
- border-radius: 5px;
-  border-color: gray; 
+ background:#ffffff;  
+ border-radius: 6px; 
+ /*
+ border: 1px; 
+ border-color: gray; 
  border-style: solid;  
  margin: auto; */
  padding: 10px;
- margin-top:-60px;
+ margin-top:0px;
 }
 
 .form-control,textarea {
@@ -377,22 +380,22 @@ width:100%
 							<textarea id="rollbackSteps" rows="4" style="width:98%;">
 							</textarea>
 					</div>
-				</div>
-				
-				<input type="button" value="Save Details" onClick="savePatchDetails()" style="margin-left: 40px" />
+				</div>				
 			</div>
-
+			<div style="padding-left:15px;padding-right:10px; margin-top:50px; margin-bottom:30px;">
+				<input type="button" class="form-control btn btn-success" value="Save And Continue" onClick="savePatchDetails()" />
+			</div>
 		</form>
-
-		<br />
 		
+	</div>
+	<div class="container main" id="bottomDiv" style="margin-top:40px; margin-bottom:50px; display: none;"> 
 	
-	<div id="uploadDiv" class="col-md-12 col-sm-6 col-xs-12">
-		<hr style="border-top: .6px solid gray;" />
+	<div id="uploadDiv" class="col-md-12 col-sm-6 col-xs-12" style="border-style: dashed;">
+		<!-- <hr style="border-top: .6px solid gray;" /> -->
 
 
 		<h4>Upload Patch files</h4>
-		<form id="uploadForm" method="POST" action="#"
+		<form id="uploadForm" class="uploadFormClass" method="POST" action="#"
 			enctype="multipart/form-data">
 			<!-- COMPONENT START -->
 			<div class="form-group">
@@ -448,8 +451,12 @@ width:100%
 	<br /> <br /> <br /> <br /> <br />	
 
 	</div>
-	<jsp:include page='footer.jsp'>
-		<jsp:param name="articleId" value="Satish" />
-	</jsp:include>
+		
+	</div>
+	<div style="height:25px;">
+		<jsp:include page='footer.jsp'>
+			<jsp:param name="articleId" value="Satish" />
+		</jsp:include>
+	</div>
 </body>
 </html>                                		                            

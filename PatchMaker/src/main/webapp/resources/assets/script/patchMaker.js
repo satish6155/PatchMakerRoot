@@ -5,6 +5,7 @@
 
 var patchId = 0;
 var allFileItems = [];
+var bottomDivHeight = 500;
 
 var fileDetail = function(id, type, name, path) {
     this.id = id;
@@ -233,6 +234,10 @@ function savePatchDetails(){
 	    	 //console.log(patchId);
 	    	 enableUpload();   /* Enabling File Upload Divisions */
 	    	 
+	    	 document.getElementById("bottomDiv").style.display = null;  //show file upload div
+	    	 scrollToFileUpload();
+	    	 
+	    	 
 	     }
 	
 	     });	
@@ -315,7 +320,7 @@ function renderFileList() {
 	    <div class="right clearfix">
 	        <div class="item__value">
 	        	<input type="text" class="form-control" id="file-path-%id%" style="width:600px; margin-top:-5px; margin-bottom:-5px;" 
-	        		placeholder="Enter destination file path" value="%path%">
+	        		placeholder="Enter destination file path or database schema detail" value="%path%">
 	        </div>
 	        <div class="item__delete">
 	            <button class="item__delete--btn">
@@ -341,6 +346,12 @@ function renderFileList() {
 		d1.insertAdjacentHTML('beforeend', htmlString);			
 			
 	});		
+	
+	if(allFileItems.length<7){		
+		document.getElementById("bottomDiv").style.height = bottomDivHeight+"px";
+	} else {
+		document.getElementById("bottomDiv").style.height = null;
+	}
 	
 }
 
@@ -369,6 +380,10 @@ function removeFileFromUI(selectorID) {
     
     var el = document.getElementById(selectorID);
     el.parentNode.removeChild(el);
+    
+    if(allFileItems.length<7){		
+		document.getElementById("bottomDiv").style.height = bottomDivHeight+"px";
+	}
     
 }
 function removeFileItem(itemID){
@@ -423,5 +438,17 @@ function saveFilePath(event){
        
     } 
     
+}
+
+function scrollToFileUpload(){
+	 document.getElementById("bottomDiv").style.height = bottomDivHeight+"px";
+	var target = $('.uploadFormClass');
+    if (target.length) {
+        $('html,body').animate({
+            scrollTop: target.offset().top
+        }, 1000);
+        return false;
+    }
+   
 }
 
