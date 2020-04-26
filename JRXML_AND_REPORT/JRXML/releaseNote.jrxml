@@ -82,7 +82,7 @@ ROLLBACK_STEPS rollbackSteps,
 SVN_REVISIONS svnRevisions,
 TESTING_DETAILS testingDetails
  from patch 
- where id =   $P{PATCH_ID} ]]>
+ where id =   $P{PATCH_ID}]]>
 	</queryString>
 	<field name="PATCHENVIRONMENTS" class="java.lang.String"/>
 	<field name="DATESTRING" class="java.lang.String"/>
@@ -527,7 +527,7 @@ TESTING_DETAILS testingDetails
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Georgia" size="16" isBold="true" isUnderline="false"/>
+					<font size="16" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Installation Guidlines]]></text>
 			</staticText>
