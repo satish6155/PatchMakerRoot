@@ -33,7 +33,7 @@ public class PatchServiceImpl {
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public Patch save(Patch patch) {
 		System.out.println("Inside patchDao.save() before save patch :"+patch);
-		patchDao.save(patch);
+		patch = patchDao.save(patch);
 		System.out.println("Inside patchDao.save() after save patch :"+patch);
 		return patch;
 	}	

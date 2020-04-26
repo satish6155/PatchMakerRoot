@@ -19,9 +19,10 @@ public class GenericEntityDaoImpl<T> {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public void save(T entity) {
+	public T save(T entity) {
 		System.out.println("Inside GenericEntityDaoImpl.save()");
-		entityManager.persist(entity);
+		//entityManager.persist(entity);
+		return entityManager.merge(entity);
 	}
 
 	public T findOne(Class<T> clazz,Long id) {

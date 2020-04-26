@@ -203,30 +203,33 @@ function SetFeature(){
 }
 function savePatchDetails(){
 	//console.log('Inside savePatchDetails.onCLick()');
+		
+	var letters = /^[a-zA-Z-]+$/;
 
 	var formData = 
 			{
 			
 			 id	: patchId,
-			 patchName : $("#patchName").val()  ,
-			 bankJira : $("#bankJiraId").val(),
-			 productJira : $("#productJiraId").val(),
-			 internalJira : $("#internalJiraId").val(),
+			 patchName : $("#patchName").val(),
+			 type : $("#patchType").val() ,
+			 bankJira : ($("#bankJiraId").val().match(letters)) ? '' : $("#bankJiraId").val(),
+			 productJira : ($("#productJiraId").val().match(letters)) ? '' : $("#productJiraId").val(),
+			 internalJira : ($("#internalJiraId").val().match(letters)) ? '' : $("#internalJiraId").val(),
 			 patchDate : $("#date").val(),
 			 defectsFixed : $("#defectsFixed").val(),
-			 modules : $("#patchModules").val(),
+			 modules : $("#patchModules").val().replace(/	+/g, ' '),
 			 features : $("#features").val(),
 			 impact : $("#impact").val(),
-			 installSteps : $("#installSteps").val(),
+			 installSteps : $("#installSteps").val().replace(/	+/g, ' '),  
 			 knownBugs : $("#knownBugs").val(),
 			 newFunctionality : $("#newFunctionality").val(),
-			 environments : $("#patchEnvironments").val(),
-			 rollbackSteps : $("#rollbackSteps").val(),
+			 environments : $("#patchEnvironments").val().replace(/	+/g, ' '),   
+			 rollbackSteps : $("#rollbackSteps").val().replace(/	+/g, ' '),    
 			 svnRevisions : $("#svnRevisions").val(),
 			 testingDetails : $("#testingDetails").val(),
 			 createdBy : $("#createdBy").val(),
 			 project :$("#project").val()
-				
+			 
 			};
 	    
 

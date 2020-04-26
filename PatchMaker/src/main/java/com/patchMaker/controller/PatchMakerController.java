@@ -1,10 +1,8 @@
 package com.patchMaker.controller;
 
-import java.io.File;
+
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +29,6 @@ import com.patchMaker.entity.Patch;
 import com.patchMaker.service.JasperServiceImpl;
 import com.patchMaker.service.PatchServiceImpl;
 import com.patchMaker.util.SVNUtills;
-import com.patchMaker.util.Values;
 
 @Controller
 public class PatchMakerController {
@@ -50,18 +47,6 @@ public class PatchMakerController {
 		HttpSession session = request.getSession();
 
 		Patch patch = new Patch();
-
-		// patch = patchServiceImpl.findOne(50000L);
-
-		/*
-		 * patch.setId(768L); patch.setBankJira("NEOPROD-150");
-		 * patch.setPatchDate("2020-04-24"); patch.setProject("P-1605-HDFC");
-		 * patch.setDefectsFixed("Dummy defects fixed");
-		 * patch.setPatchName(patch.getProject()+"_"+patch.getBankJira()+"_"+patch.
-		 * getPatchDate()+"_"+patch.getId());
-		 */
-
-		// generateReport(patch);
 
 		if (username.equalsIgnoreCase("test")) {
 			session.setAttribute("username", username);
@@ -95,10 +80,14 @@ public class PatchMakerController {
 	public @ResponseBody String savePatchDetails(HttpServletRequest request, Patch patch) {
 
 		HttpSession session = request.getSession();
-
+		patch.setCreatedBy((String) session.getAttribute("username"));
+		
 		System.out.println("Patch before save : " + patch);
-		patchServiceImpl.save(patch);
+		
+		patch = patchServiceImpl.save(patch);
+		
 		System.out.println(patch);
+		
 		session.setAttribute("patchName", patch.getPatchName());
 		session.setAttribute("patchId", patch.getId());
 		return String.valueOf(patch.getId());
@@ -117,6 +106,8 @@ public class PatchMakerController {
 			
 			patchServiceImpl.SaveFilesJson(patchId, filesJson);
 			
+			jasperServiceImpl.generateReleaseNote(patchId);
+			
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
@@ -131,8 +122,6 @@ public class PatchMakerController {
 		List<Patch> patches = new ArrayList<Patch>();
 
 		patches = patchServiceImpl.findAll();
-		// patches = getDummyPatches(); // this will be commented and above will be
-		// uncommented for actual data fetch
 
 		Map<String, Patch> patchesMap = new HashMap<String, Patch>();
 
@@ -158,58 +147,6 @@ public class PatchMakerController {
 		return model;
 	}
 
-	private List<Patch> getDummyPatches() {
-		List<Patch> patches = new ArrayList<Patch>();
-
-		Patch patch = new Patch();
-
-		patch.setId(768L);
-		patch.setBankJira("NEOPROD-150");
-		patch.setPatchDate(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
-		patch.setProject("P-1605-HDFC");
-		patch.setDefectsFixed("Dummy defects fixed");
-		patch.setPatchName(
-				patch.getProject() + "_" + patch.getBankJira() + "_" + patch.getPatchDate() + "_" + patch.getId());
-
-		patches.add(patch);
-
-		return patches;
-	}
-
-	@RequestMapping(value = "/generateReport")
-	public void generateReport(Patch patch) {
-
-		System.out.println("Yuhuu");
-		String templatePathWithReport = Values.JRXML_DIRECTORY + File.separator + Values.RELEASE_NOTE_JRXML_NAME;
-		String generationPath = Values.RELEASE_NOTE_PDF_DIRECTORY + File.separator + Values.RELEASE_NOTE_PDF_NAME;
-		/*
-		 * 
-		 * String templatePathWithReport =
-		 * "D:\\PatchMakerRoot\\JRXML_AND_REPORT\\JRXML\\releaseNote.jrxml"; String
-		 * generationPath =
-		 * "D:\\PatchMakerRoot\\JRXML_AND_REPORT\\GENERATED_REPORT\\RELEASE_NOTE.pdf";
-		 */
-
-		Map<String, Object> parameters = new HashMap<>();
-		parameters.put("defectsFixed", patch.getDefectsFixed());
-		parameters.put("features", patch.getFeatures());
-		parameters.put("impact", patch.getImpact());
-		parameters.put("installSteps", patch.getInstallSteps());
-		parameters.put("knownBugs", patch.getKnownBugs());
-		parameters.put("newFunctionality", patch.getNewFunctionality());
-		parameters.put("patchEnvironments", patch.getEnvironments());
-		parameters.put("patchName", patch.getPatchName());
-		parameters.put("rollbackSteps", patch.getRollbackSteps());
-		parameters.put("svnRevisions", patch.getSvnRevisions());
-		parameters.put("testingDetails", patch.getTestingDetails());
-		parameters.put("relatedJiras",
-				patch.getBankJira() + " " + patch.getInternalJira() + " " + patch.getProductJira());
-		parameters.put("dateString", patch.getPatchDate());
-
-		jasperServiceImpl.generatePDFFromJasper(templatePathWithReport, generationPath, parameters);
-
-	}
-
 	@RequestMapping(value = "/uploadFiles/{fileType}", method = RequestMethod.POST)
 	public @ResponseBody String uploadFiles(HttpServletRequest request, @PathVariable String fileType,
 			HttpServletResponse response) throws IOException {
@@ -228,7 +165,5 @@ public class PatchMakerController {
 			e.printStackTrace();
 		}
 		return message;
-
 	}
-
 }

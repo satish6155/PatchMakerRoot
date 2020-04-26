@@ -158,6 +158,8 @@ width:100%
 	      </div>
 	  </div>    
 	       <form class="form" action="##" method="post" id="registrationForm">
+	       
+	        <input type="text" id="userId" hidden="true">
 	        <div class="row">  
 	     	 <div class="col-md-12">
 	      		<div class="form-group col-md-4">

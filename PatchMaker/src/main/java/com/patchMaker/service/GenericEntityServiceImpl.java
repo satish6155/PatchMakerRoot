@@ -18,9 +18,9 @@ public class GenericEntityServiceImpl<T> {
 	private GenericEntityDaoImpl<T> genericDao;
 	
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-	public void save(T entity) {
+	public T save(T entity) {
 		System.out.println("Inside GenericEntityDaoImpl.save()");
-		genericDao.save(entity);
+		return genericDao.save(entity);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
