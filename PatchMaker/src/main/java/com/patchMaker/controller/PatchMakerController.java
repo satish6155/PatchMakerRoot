@@ -99,6 +99,8 @@ public class PatchMakerController {
 		HttpSession session = request.getSession();
 		
 		Long patchId = (Long) session.getAttribute("patchId");
+		
+		String patchName = String.valueOf(session.getAttribute("patchName"));
 		ObjectMapper mapper = new ObjectMapper();
 
 		try {
@@ -106,7 +108,9 @@ public class PatchMakerController {
 			
 			patchServiceImpl.SaveFilesJson(patchId, filesJson);
 			
-			jasperServiceImpl.generateReleaseNote(patchId);
+			//jasperServiceImpl.generateReleaseNote(patchId);
+			
+			patchServiceImpl.createZip(patchName);
 			
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
@@ -161,7 +165,7 @@ public class PatchMakerController {
 		try {
 			message = patchServiceImpl.writeFiles(request, fileType, patchName);
 		} catch (ServletException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Exception in uploadFiles method : "+e);
 			e.printStackTrace();
 		}
 		return message;

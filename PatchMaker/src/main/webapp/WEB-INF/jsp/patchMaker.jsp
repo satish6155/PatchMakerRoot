@@ -189,7 +189,8 @@ width:100%
                              <select class="form-control" id="patchType" onchange="patchTypeOnChange()" >
 							    <option value="Fix">Permanent Fix</option>
 							    <option value="Data_Repair">Data Repair</option>
-							    <option value="Testing">Testing</option>   							   
+							    <option value="Testing">Testing</option>   	
+							    <option value="logger">Logger</option> 						   
 							  </select>
                      </div>
 				</div>
@@ -315,7 +316,10 @@ width:100%
 	                            <option>Select Modules</option>
 							    <option>CAS</option>
 							    <option>Common Masters</option>   
-							    <option>ECM</option> 	
+							    <option>ECM</option>
+							    <option>INTG</option>
+							    <option>GCC</option>
+							    <option>GCD</option> 	
 							    <option>MFIN</option> 
 							    <option>Geotracker</option> 
 							    <option>SSO</option> 	

@@ -74,7 +74,7 @@ public class Patch extends BaseEntity {
 	@Column
 	private String type;
 
-	@Column
+	@Column(length = 3000)
 	private String filesJson;
 
 	public String getPatchName() {

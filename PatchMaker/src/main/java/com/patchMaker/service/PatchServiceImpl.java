@@ -1,8 +1,12 @@
 package com.patchMaker.service;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.patchMaker.controller.PatchMakerController;
 import com.patchMaker.dao.GenericEntityDaoImpl;
 import com.patchMaker.entity.Patch;
 import com.patchMaker.util.Values;
@@ -86,5 +89,51 @@ public class PatchServiceImpl {
 		patchDao.update(patch);
 	}
 
-}
+	public void createZip(String patchName){
+		
+		 FileOutputStream fos;
+		try {
+			fos = new FileOutputStream(Values.BASE_DIRECTORY+File.separator+patchName+".zip");
+		
+			ZipOutputStream zos = new ZipOutputStream(fos);
+			
+			addDirToZipArchive(zos, new File(Values.BASE_DIRECTORY+File.separator+patchName), null);
+		
+			    zos.flush();
+			    fos.flush();
+			    zos.close();
+			    fos.close();
+	
+		} catch (Exception e) {
+			System.out.println("Excepiton while creating zip : "+e);
+		}
+		
+	}
+	
+	public static void addDirToZipArchive(ZipOutputStream zos, File fileToZip, String parrentDirectoryName) throws Exception {
+	    if (fileToZip == null || !fileToZip.exists()) {
+	        return;
+	    }
 
+	    String zipEntryName = fileToZip.getName();
+	    if (parrentDirectoryName!=null && !parrentDirectoryName.isEmpty()) {
+	        zipEntryName = parrentDirectoryName + File.separator + fileToZip.getName();
+	    }
+
+	    if (fileToZip.isDirectory()) {
+	        for (File file : fileToZip.listFiles()) {
+	            addDirToZipArchive(zos, file, zipEntryName);
+	        }
+	    } else {
+	        byte[] buffer = new byte[1024];
+	        FileInputStream fis = new FileInputStream(fileToZip);
+	        zos.putNextEntry(new ZipEntry(zipEntryName));
+	        int length;
+	        while ((length = fis.read(buffer)) > 0) {
+	            zos.write(buffer, 0, length);
+	        }
+	        zos.closeEntry();
+	        fis.close();
+	    }
+	}
+}
