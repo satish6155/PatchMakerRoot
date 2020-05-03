@@ -135,6 +135,11 @@ border-radius: 3px;
 width:100%
 }
 
+ .required:after {
+    content:" *";
+    color: red;
+  }
+
 </style>
 
 <body onload="executeAll();">
@@ -309,9 +314,9 @@ width:100%
 	                     </div>
                </div>
                <div class="col-md-6" style="margin-left:-16px;">
-		      		 <div class="form-group col-md-5">
+		      		 <div class="form-group col-md-5 ">
 						
-	                            <label for="date"><h4>Patch Modules</h4></label>
+	                            <label for="patchModulesOptions"><h4>Patch Modules</h4></label>
 	                            <select class="form-control" id="patchModulesOptions" onchange="SetPatchModules()">
 	                            <option>Select Modules</option>
 							    <option>CAS</option>
@@ -349,8 +354,8 @@ width:100%
 							    <option>Take back up of running war</option>
 							    <option>Merge class files</option>   
 							    <option>Take restart</option> 	
-							    <option>Set hbm2ddl=update</option> 
-							    <option>Execute provide script</option> 		   
+							    <option>Set hbm2ddl.auto=update</option> 
+							    <option>Execute provided script</option> 		   
 							  </select>
 	                     </div>
 					</div>

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.tmatesoft.svn.core.SVNException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -96,21 +97,31 @@ public class PatchMakerController {
 	@RequestMapping(value = "/saveFileDetails", produces = "application/json", method = RequestMethod.POST)
 	public @ResponseBody String saveFileDetails(HttpServletRequest request, @RequestBody FilesWrapper files) {
 
+		SVNUtills svnUtills = new SVNUtills();
 		HttpSession session = request.getSession();
 		
 		Long patchId = (Long) session.getAttribute("patchId");
 		
 		String patchName = String.valueOf(session.getAttribute("patchName"));
+		String userName = String.valueOf(session.getAttribute("username"));
+		String password = String.valueOf(session.getAttribute("password"));
+		
 		ObjectMapper mapper = new ObjectMapper();
+		
+		System.out.println("save file details : files : "+files);
 
 		try {
 			String filesJson = mapper.writeValueAsString(files);
 			
 			patchServiceImpl.SaveFilesJson(patchId, filesJson);
 			
-			//jasperServiceImpl.generateReleaseNote(patchId);
+			jasperServiceImpl.generateReleaseNote(patchId);
 			
-			patchServiceImpl.createZip(patchName);
+			try {
+				svnUtills.svn_actions(patchName, userName, password);
+			} catch (SVNException e) {
+				System.out.println("Error in taking svn_actions : Exception is : "+e);
+			}
 			
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();

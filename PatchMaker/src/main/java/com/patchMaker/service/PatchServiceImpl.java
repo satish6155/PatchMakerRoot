@@ -18,9 +18,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.tmatesoft.svn.core.SVNException;
+import org.tmatesoft.svn.core.SVNURL;
 
 import com.patchMaker.dao.GenericEntityDaoImpl;
 import com.patchMaker.entity.Patch;
+import com.patchMaker.util.SVNUtills;
 import com.patchMaker.util.Values;
 
 @Service("patchServiceImpl")
@@ -89,9 +92,11 @@ public class PatchServiceImpl {
 		patchDao.update(patch);
 	}
 
-	public void createZip(String patchName){
+//	public File createZip(String source, String destinationFolder, String groupId, String datetime) 
+	
+/*	public void createZip(String patchName) throws SVNException{
 		
-		 FileOutputStream fos;
+		FileOutputStream fos;
 		try {
 			fos = new FileOutputStream(Values.BASE_DIRECTORY+File.separator+patchName+".zip");
 		
@@ -135,5 +140,5 @@ public class PatchServiceImpl {
 	        zos.closeEntry();
 	        fis.close();
 	    }
-	}
+	} */
 }
