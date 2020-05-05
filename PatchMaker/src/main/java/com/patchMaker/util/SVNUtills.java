@@ -139,6 +139,8 @@ public class SVNUtills {
 	                .doImport(fileToCheckin ,SVNURL.parseURIDecoded(path), "testing svn kit integration", recursive);
 	       System.out.println("The directory was added: new revision number is : "+importInfo.getNewRevision());
 	       System.out.println("Repository latest revision (after committing): " + repository.getLatestRevision());
+	       deleteFile(new File(Values.BASE_DIRECTORY+File.separator+patchName));
+	       System.out.println("File deleted successfully!!");
 	}
 		
 public static void createZip(String patchName) throws SVNException{
@@ -189,5 +191,25 @@ public static void createZip(String patchName) throws SVNException{
 	        fis.close();
 	    }
 	}
+	
+	
+	private static void deleteFile(File file) {
+		   if (file == null || !file.exists()) {
+		       return;
+		   }
+		   
+		   if (file.isDirectory()) {
+		       for (File currentFile : file.listFiles()) {
+		        System.out.println(" Directory :"+currentFile);
+		           deleteFile(currentFile);
+		       }
+		       System.out.println(" deleting directory :"+file);
+		       file.delete();
+		   } else {
+		    System.out.println(" deleting file :"+file);
+		    file.delete();
+		    }
+		}
+
 	
 }
